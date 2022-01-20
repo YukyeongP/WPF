@@ -1,0 +1,147 @@
+﻿<Window x:Class="WPF1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF1"
+        mc:Ignorable="d"
+        Title="SignUp" Background="#F5F6F7" MinHeight="500" MinWidth="600">
+
+    <Border Padding="10" MinHeight="500" MinWidth="600"  MaxHeight="550" MaxWidth="700">
+        <StackPanel Margin="30">
+            <!-- TextBlock -->
+            <TextBlock Foreground="#2DB400" FontWeight="Bold" FontSize="40" FontFamily="Ebrima" Text="HancomGMD" TextAlignment="Center" Margin="0,0,0,30"></TextBlock>
+
+            <!-- ID, PW, PWCheck -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/> 
+                    <RowDefinition Height="0.5*"/> <!--error textblock-->
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="tbxIdBolder" Grid.Row="0" Grid.ColumnSpan="6"></TextBox>
+                <Grid Grid.Row="0" Grid.ColumnSpan="5">
+                    <StackPanel>
+                        <Grid>                            
+                            <TextBlock x:Name="tbkId" FontSize="16" TextAlignment="Left" VerticalAlignment="Center" Text="아이디" Margin="10 0" Foreground="Gray"/>
+                            <TextBox x:Name="tbxId" Height="45" FontSize="16" Background="{x:Null}" MaxLength="20"
+                                     TextAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Transparent" 
+                                     TextChanged="tbxId_TextChanged" LostFocus="tbxId_LostFocus" GotFocus="tbxId_GotFocus"/>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+
+                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="16" FontWeight="SemiBold" TextAlignment="Center" VerticalAlignment="Center"
+                         Text="@hancomgmd.com" Foreground="Gray"></TextBlock>
+
+                <Grid Grid.Row="1" Grid.ColumnSpan="6" >
+                    <TextBox x:Name="tbxPwBolder"></TextBox>
+                    <TextBlock x:Name="tbkPw" FontSize="16" TextAlignment="Left" VerticalAlignment="Center" Text="비밀번호" Margin="10 0" Foreground="Gray"/>
+                    <!--<PasswordBox x:Name="passwordBox" MaxLength="8"></PasswordBox>-->
+                    <TextBox x:Name="tbxPw" Height="45" FontSize="16" Background="{x:Null}" MaxLength="16"
+                                     TextAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Transparent" 
+                                     TextChanged="tbxPw_TextChanged" LostFocus="tbxPw_LostFocus" GotFocus="tbxPw_GotFocus"/>
+                </Grid>
+                
+                <Grid Grid.Row="1" Grid.ColumnSpan="6" >
+                    <PasswordBox x:Name="PasswordBox" MaxLength="16" PlaceholderText ="비밀 번호"/>
+
+                </Grid>
+                
+                <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                    <TextBox x:Name="tbxPwCBolder"></TextBox>
+                    <TextBlock x:Name="tbkPwC" FontSize="16" TextAlignment="Left" VerticalAlignment="Center" Text="비밀번호 재확인" Margin="10 0" Foreground="Gray"/>
+                    <TextBox x:Name="tbxPwC" Height="45" FontSize="16" Background="{x:Null}"
+                             TextAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Transparent" 
+                             TextChanged="tbxPwC_TextChanged" LostFocus="tbxPwC_LostFocus" GotFocus="tbxPwC_GotFocus"/>
+                </Grid>
+
+                <TextBlock x:Name="PwCError" Grid.Row="4" Grid.ColumnSpan="6" Visibility="Hidden" FontSize="13" TextAlignment="Left" VerticalAlignment="Center" 
+                           Foreground="red" Text="비밀번호가 일치하지 않습니다."/>
+
+            </Grid>
+
+            <!-- Name, Bday -->
+            <Grid Margin="0 10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.5*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0" Grid.ColumnSpan="6">
+                    <TextBox x:Name="tbxNameBolder"></TextBox>
+                    <TextBlock x:Name="NameError" Grid.Row="2" Grid.ColumnSpan="6" Visibility="Hidden" FontSize="13" TextAlignment="Left" VerticalAlignment="Center" 
+                           Foreground="red" Text="이름을 정확하게 입력해주세요"/>
+
+                    <TextBlock x:Name="tbkName" FontSize="16" TextAlignment="Left" VerticalAlignment="Center" Text="이름" Margin="10 0" Foreground="Gray"/>
+                    <TextBox x:Name="tbxName" Height="45" FontSize="16" Background="{x:Null}"
+                             TextAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Transparent" 
+                             TextChanged="tbxName_TextChanged" LostFocus="tbxName_LostFocus" GotFocus="tbxName_GotFocus"/>
+                </Grid>
+
+                <RadioButton GroupName="rdoGender" x:Name="radio1" Grid.Column="4" FontSize="16" VerticalContentAlignment="Center" Margin="10" Foreground="Gray" 
+                             Background="#F5F6F7" Content="남자" Tag="1"></RadioButton>
+                <RadioButton GroupName="rdoGender" x:Name="radio2" Grid.Row="0" Grid.Column="5" FontSize="16" VerticalContentAlignment="Center" Margin="10" Foreground="Gray" 
+                             Background="#F5F6F7" Content="여자" Tag="2"></RadioButton>
+
+                <TextBox x:Name="tbxBdayBolder1" Grid.Row="1" Grid.ColumnSpan="6"></TextBox>
+                <TextBox x:Name="tbxBdayBolder2" Grid.Row="1" Grid.Column="0"></TextBox>
+                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="16" TextAlignment="Center" VerticalAlignment="Center"
+                         Text="생일" Foreground="Gray"/>
+
+<!-- Bday Error TextBlock -->
+                <TextBlock x:Name="BYearError" Grid.Row="2" Grid.ColumnSpan="6" Visibility="Hidden" FontSize="13" TextAlignment="Left" VerticalAlignment="Center" 
+                           Foreground="red" Text="생년월일을 정확하게 입력해주세요"/>
+                <TextBlock x:Name="BMonthError" Grid.Row="2" Grid.ColumnSpan="6" Visibility="Hidden" FontSize="13" TextAlignment="Left" VerticalAlignment="Center" 
+                           Foreground="red" Text="태어난 월을 정확하게 입력해주세요"/>
+                <TextBlock x:Name="BDayError" Grid.Row="2" Grid.ColumnSpan="6" Visibility="Hidden" FontSize="13" TextAlignment="Left" VerticalAlignment="Center" 
+                           Foreground="red" Text="태어난 일을 정확하게 입력해주세요"/>
+
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <TextBlock x:Name="tbkBirthYear" FontSize="16" TextAlignment="Right" VerticalAlignment="Center" Text="년" Foreground="Gray"/>
+                    <TextBox x:Name="tbxBirthYear" Height="45" FontSize="16" Background="{x:Null}" MaxLength="4"
+                         TextAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Transparent"  PreviewTextInput="tbxBthPreviewTextInput"
+                         TextChanged="tbxBthYear_TextChanged" LostFocus="tbxBthYear_LostFocus" GotFocus="tbxBthYear_GotFocus"></TextBox>
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="2">
+                    <TextBlock x:Name="tbkBirthMonth" FontSize="16" TextAlignment="Right" VerticalAlignment="Center" Text="월" Foreground="Gray"/>
+                    <TextBox x:Name="tbxBirthMonth" Height="45" FontSize="16" Background="{x:Null}" MaxLength="2" 
+                         TextAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Transparent" PreviewTextInput="tbxBthPreviewTextInput"
+                         TextChanged="tbxBthMonth_TextChanged" LostFocus="tbxBthMonth_LostFocus" GotFocus="tbxBthMonth_GotFocus"></TextBox>
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="3">
+                    <TextBlock x:Name="tbkBirthDay" FontSize="16" TextAlignment="Right" VerticalAlignment="Center" Text="일" Foreground="Gray"/>
+                    <TextBox x:Name="tbxBirthDay" Height="45" FontSize="16" Background="{x:Null}" MaxLength="2" 
+                         TextAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Transparent" PreviewTextInput="tbxBthPreviewTextInput"
+                         TextChanged="tbxBthDay_TextChanged" LostFocus="tbxBthDay_LostFocus" GotFocus="tbxBthDay_GotFocus"></TextBox>
+                </Grid>
+            </Grid>
+
+            <!-- SignUp button -->
+            <Grid Margin="0 10">
+                <Button x:Name="btSignUp" Height="60" Grid.Row="1" Grid.ColumnSpan="2" IsEnabled="False"
+                    FontSize="20" Foreground="White" Background="#2DB400" BorderBrush="Transparent" Content="가입하기"
+                        Click="SignUpBtnClick"/>
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>

@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace WPF3
 {
@@ -20,41 +7,42 @@ namespace WPF3
     /// </summary>
     public partial class MainWindow : Window
     {
+        UserWindow _userWindow = null;
+
         public MainWindow()
         {
             InitializeComponent();
             AddMemBtn.Click += new RoutedEventHandler(AddMemberBtnClick);
         }
-        
-        UserWindow userWindow = null;
+
+        public void UserWindowOnUserWindowTextInputEvent(UserInfo Parameters)
+        {
+            UserlistBox.Items.Add(Parameters);
+            if (_userWindow != null)
+            {
+                _userWindow.Close();
+                _userWindow.OnUserWindowTextInputEvent -= new UserWindow.OnUserWindowTextInputHandler(UserWindowOnUserWindowTextInputEvent);
+                _userWindow = null;
+            }
+        }
 
         private void AddMemberBtnClick(object sender, RoutedEventArgs e)
         {
-            if (userWindow == null)
+            if (_userWindow == null)
             {
-                userWindow = new UserWindow();
-                userWindow.OnUserWindowTextInputEvent += new UserWindow.OnUserWindowTextInputHandler(userWindowOnUserWindowTextInputEvent);
+                _userWindow = new UserWindow();
+                _userWindow.OnUserWindowTextInputEvent += new UserWindow.OnUserWindowTextInputHandler(UserWindowOnUserWindowTextInputEvent);
 
-                userWindow.Top = this.Top + (this.ActualHeight - userWindow.Height) / 2;
-                userWindow.Left = this.Left + (this.ActualWidth - userWindow.Width) / 2;
-                userWindow.ShowDialog();
-            }
-        }
-          
-        void userWindowOnUserWindowTextInputEvent(List<UserInfo> Parameters)
-        {
-            UserlistBox.ItemsSource = Parameters;
-            if(userWindow != null)
-            {
-                userWindow.Close();
-                userWindow.OnUserWindowTextInputEvent -= new UserWindow.OnUserWindowTextInputHandler(userWindowOnUserWindowTextInputEvent);
-                userWindow = null;
+                _userWindow.Top = this.Top + (this.ActualHeight - _userWindow.Height) / 2;
+                _userWindow.Left = this.Left + (this.ActualWidth - _userWindow.Width) / 2;
+                _userWindow.ShowDialog();
             }
         }
 
         private void DeleteBtnClick(object sender, RoutedEventArgs e)
         {
             UserlistBox.Items.RemoveAt(UserlistBox.SelectedIndex);
+            UserlistBox.Items.Refresh();
         }
     }
 }

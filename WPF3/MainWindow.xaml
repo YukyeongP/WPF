@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPF3"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="600" Left="600">
-    
+
     <Window.Resources>
         <DataTemplate x:Key="UserListBoxTemplate">
             <StackPanel Margin="3">
@@ -17,18 +17,17 @@
                     <TextBlock Text="세)" FontWeight="Bold" FontSize="17" />
                 </DockPanel>
                 <DockPanel>
-                    <TextBlock FontWeight="Bold" Text="주소:" DockPanel.Dock="Left" Margin="5,5,5,0" />
+                    <TextBlock FontWeight="Bold" Text="주소:" DockPanel.Dock="Left" Margin="5,5,5,0" VerticalAlignment="Center"/>
                     <TextBlock x:Name="ListBoxAddress" Text="{Binding Path = Address}" VerticalAlignment="Center"/>
                 </DockPanel>
                 <DockPanel>
-                    <TextBlock FontWeight="Bold" Text="전화번호:" DockPanel.Dock="Left" Margin="5,0,10,0" />
-                    <TextBlock Text="" />
+                    <TextBlock FontWeight="Bold" Text="전화번호:" DockPanel.Dock="Left" Margin="5,0,10,0" VerticalAlignment="Center" />
                     <TextBlock x:Name="ListBoxPhoneNum" Text="{Binding Path = PhoneNo}" VerticalAlignment="Center"/>
                 </DockPanel>
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -39,9 +38,24 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="AddMemBtn" Grid.Row="0" Grid.Column="0" Content="신규 회원 추가"  Width="120" Height="40" HorizontalAlignment="Left" Margin="20,10,10,0" VerticalAlignment="Top"  Click="AddMemberBtnClick"/>
+        <Button x:Name="AddMemBtn" Grid.Row="0" Grid.Column="0" Content="신규 회원 추가" Width="120" Height="40" HorizontalAlignment="Left" Margin="20,10,10,0" VerticalAlignment="Top"  Click="AddMemberBtnClick">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        
         <Label x:Name="MemberListLabel" Grid.Row="1" Grid.Column="0" Content="회원 목록" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0"/>
-        <Button x:Name="DeleteBtn" Grid.Row="1" Grid.Column="0" Content="선택 삭제"  Width="120" Height="40" HorizontalAlignment="Right" Margin="20,10,15,0" Click="DeleteBtnClick"/>
+        
+        <Button x:Name="DeleteBtn" Grid.Row="1" Grid.Column="0" Content="선택 삭제"  Width="120" Height="40" HorizontalAlignment="Right" Margin="20,10,15,0" Click="DeleteBtnClick">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        
         <ListBox Name="UserlistBox" Grid.Row="2" Grid.Column="0" Margin="17,8,15,26" ItemsSource="{Binding Tables[0]}" ItemTemplate="{StaticResource UserListBoxTemplate}" 
                  IsSynchronizedWithCurrentItem="True"/>
     </Grid>

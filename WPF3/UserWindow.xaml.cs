@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace WPF3
 {
@@ -19,22 +7,19 @@ namespace WPF3
     /// </summary>
     public partial class UserWindow : Window
     {
-        UserInfo userInfo1 = new UserInfo();
-        List<UserInfo> userInfoList = new List<UserInfo>();
-
         public UserWindow()
         {
             InitializeComponent();
-            ConfirmBtn.Click += new RoutedEventHandler(ConfirmBtnClick);//
+            ConfirmBtn.Click += new RoutedEventHandler(ConfirmBtnClick);
         }
 
-        public delegate void OnUserWindowTextInputHandler(List<UserInfo> Parameters);
+        public delegate void OnUserWindowTextInputHandler(UserInfo Parameters);
         public event OnUserWindowTextInputHandler OnUserWindowTextInputEvent;
 
-        private List<UserInfo> GetUserInfo()
+        private UserInfo GetUserInfo()
         {
-            userInfoList.Add(new UserInfo() { Name = TbxName.Text, Age = TbxAge.Text, Address = TbxAddress.Text, PhoneNo = TbxPhoneNo.Text });
-            return userInfoList;
+            var _userInfo = new UserInfo(TbxName.Text, TbxAge.Text, TbxAddress.Text, TbxPhoneNo.Text);
+            return _userInfo;
         }
 
         private void ConfirmBtnClick(object sender, RoutedEventArgs e)
@@ -48,6 +33,7 @@ namespace WPF3
             TbxAddress.Text = "";
             TbxPhoneNo.Text = "";
         }
+
         private void CancelBtnClick(object sender, RoutedEventArgs e)
         {
             UserWindow.GetWindow(this).Close();

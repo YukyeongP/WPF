@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WPF3">
+    <DataTemplate x:Key="UserListBoxTemplate">
+        <StackPanel Margin="3">
+            <DockPanel>
+                <TextBlock x:Name="ListBoxName" Text="{Binding Path = Name}" Foreground="Green" FontWeight="Bold" FontSize="17" VerticalAlignment="Center"/>
+                <TextBlock Text=" (" FontWeight="Bold" FontSize="17" />
+                <TextBlock x:Name="ListBoxAge" Text="{Binding Path = Age}" FontWeight="Bold" FontSize="17" VerticalAlignment="Center"/>
+                <TextBlock Text="세)" FontWeight="Bold" FontSize="17" />
+            </DockPanel>
+            <DockPanel>
+                <TextBlock FontWeight="Bold" Text="주소:" DockPanel.Dock="Left" Margin="5,5,5,0" VerticalAlignment="Center"/>
+                <TextBlock x:Name="ListBoxAddress" Text="{Binding Path = Address}" VerticalAlignment="Center"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock FontWeight="Bold" Text="전화번호:" DockPanel.Dock="Left" Margin="5,0,10,0" VerticalAlignment="Center" />
+                <TextBlock x:Name="ListBoxPhoneNum" Text="{Binding Path = PhoneNo}" VerticalAlignment="Center"/>
+            </DockPanel>
+        </StackPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

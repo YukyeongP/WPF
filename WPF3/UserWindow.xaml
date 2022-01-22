@@ -52,8 +52,21 @@
         <TextBox x:Name="TbxPhoneNo" Grid.Row="3" Grid.Column="1" Style="{StaticResource TbxStyle}"/>
 
         <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment ="Center">
-            <Button x:Name="ConfirmBtn" Content="확인" Width="120" Height="40" Margin="0,10,10,0" Click="ConfirmBtnClick"/>
-            <Button x:Name="CancelBtn" Content="취소" Width="120" Height="40" Margin="0,10,10,0" Click="CancelBtnClick"/>
+            <Button x:Name="ConfirmBtn" Content="확인" Width="120" Height="40" Margin="0,10,10,0" Click="ConfirmBtnClick">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            
+            <Button x:Name="CancelBtn" Content="취소" Width="120" Height="40" Margin="0,10,10,0" Click="CancelBtnClick">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

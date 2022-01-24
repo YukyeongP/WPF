@@ -1,4 +1,4 @@
-﻿<Window x:Class="WPF3.MainWindow"
+<Window x:Class="WPF3.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -48,7 +48,7 @@
         
         <Label x:Name="MemberListLabel" Grid.Row="1" Grid.Column="0" Content="회원 목록" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0"/>
 
-        <Button x:Name="DeleteBtn" Grid.Row="1" Grid.Column="0" Content="선택 삭제"  Width="120" Height="40" HorizontalAlignment="Right" Margin="20,10,15,0" Command="{Binding DeleteBtn} "> <!--Click="DeleteBtnClick">--> 
+        <Button x:Name="DeleteBtn" Grid.Row="1" Grid.Column="0" Content="선택 삭제"  Width="120" Height="40" HorizontalAlignment="Right" Margin="20,10,15,0" Command="{Binding DeleteBtn}"> <!--Click="DeleteBtnClick">--> 
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -56,7 +56,7 @@
             </Button.Resources>
         </Button>
         
-        <ListBox x:Name="UserlistBox" Grid.Row="2" Grid.Column="0" Margin="17,8,15,26" ItemsSource="{Binding UserList}" ItemTemplate="{StaticResource UserListBoxTemplate}" 
+        <ListBox x:Name="UserlistBox" Grid.Row="2" Grid.Column="0" Margin="17,8,15,26" SelectedItem="" ItemsSource="{Binding UserList}" ItemTemplate="{StaticResource UserListBoxTemplate}" 
                  IsSynchronizedWithCurrentItem="True"/>
     </Grid>
 </Window>

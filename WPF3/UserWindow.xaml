@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:WPF3"
         mc:Ignorable="d" WindowStartupLocation="CenterOwner"
         Title="UserWindow" Height="350" Width="450">
-    
     <Window.Resources>
         <Style TargetType="{x:Type TextBlock}" x:Key="TbkStyle">
             <Setter Property="TextWrapping" Value="Wrap"/>
@@ -33,33 +32,31 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
-
+        
+        <!-- ID, Email, Name 표시 -->
         <TextBlock Grid.Row="0" Grid.Column="0" Text="이름" Style="{StaticResource TbkStyle}" />
-        <TextBox x:Name="TbxName" Grid.Row="0" Grid.Column="1" Style="{StaticResource TbxStyle}" />
-
         <TextBlock Grid.Row="1" Grid.Column="0" Text="나이" Style="{StaticResource TbkStyle}" />
-        <TextBox x:Name="TbxAge" Grid.Row="1" Grid.Column="1" Style="{StaticResource TbxStyle}" />
-
         <TextBlock Grid.Row="2" Grid.Column="0" Text="주소" Style="{StaticResource TbkStyle}" />
-        <TextBox x:Name="TbxAddress" Grid.Row="2" Grid.Column="1" Style="{StaticResource TbxStyle}"/>
-
         <TextBlock Grid.Row="3" Grid.Column="0" Text="전화번호" Style="{StaticResource TbkStyle}"/>
-        <TextBox x:Name="TbxPhoneNo" Grid.Row="3" Grid.Column="1" Style="{StaticResource TbxStyle}"/>
+
+        <!-- 사용자의 ID, Email, Name이 입력되는 곳 -->
+        <TextBox x:Name="TbxName" Grid.Row="0" Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}" />
+        <TextBox x:Name="TbxAge" Grid.Row="1" Grid.Column="1" Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}" />
+        <TextBox x:Name="TbxAddress" Grid.Row="2" Grid.Column="1" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
+        <TextBox x:Name="TbxPhoneNo" Grid.Row="3" Grid.Column="1" Text="{Binding PhoneNo, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
 
         <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment ="Center">
-            <Button x:Name="ConfirmBtn" Content="확인" Width="120" Height="40" Margin="0,10,10,0" Click="ConfirmBtnClick">
+            <Button x:Name="ConfirmBtn" Content="Confirm" Width="120" Height="40" Margin="0,10,10,0" Click="ConfirmBtnClick">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            
             <Button x:Name="CancelBtn" Content="취소" Width="120" Height="40" Margin="0,10,10,0" Click="CancelBtnClick">
                 <Button.Resources>
                     <Style TargetType="Border">

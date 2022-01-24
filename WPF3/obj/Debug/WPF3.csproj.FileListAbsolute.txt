@@ -34,3 +34,5 @@ C:\Users\byk11\source\repos\YukyeongP\WPF\WPF\WPF3\obj\Debug\WPF3.exe
 C:\Users\byk11\source\repos\YukyeongP\WPF\WPF\WPF3\obj\Debug\WPF3.pdb
 C:\Users\byk11\source\repos\YukyeongP\WPF\WPF\WPF3\obj\Debug\MyResourcesDictionary.baml
 C:\Users\byk11\source\repos\YukyeongP\WPF\WPF\WPF3\obj\Debug\App.baml
+C:\Users\김승주\Desktop\YKP\WPF\WPF3\obj\Debug\App.baml
+C:\Users\김승주\Desktop\YKP\WPF\WPF3\obj\Debug\MyResourcesDictionary.baml

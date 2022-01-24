@@ -12,9 +12,9 @@
             <StackPanel Margin="3">
                 <DockPanel>
                     <TextBlock x:Name="ListBoxName" Text="{Binding Path = Name}" Foreground="Green" FontWeight="Bold" FontSize="17" VerticalAlignment="Center"/>
-                    <TextBlock Text=" (" FontWeight="Bold" FontSize="17" />
+                    <TextBlock Text=" (" FontWeight="Bold" FontSize="17"/>
                     <TextBlock x:Name="ListBoxAge" Text="{Binding Path = Age}" FontWeight="Bold" FontSize="17" VerticalAlignment="Center"/>
-                    <TextBlock Text="세)" FontWeight="Bold" FontSize="17" />
+                    <TextBlock Text="세)" FontWeight="Bold" FontSize="17"/>
                 </DockPanel>
                 <DockPanel>
                     <TextBlock FontWeight="Bold" Text="주소:" DockPanel.Dock="Left" Margin="5,5,5,0" VerticalAlignment="Center"/>
@@ -47,8 +47,8 @@
         </Button>
         
         <Label x:Name="MemberListLabel" Grid.Row="1" Grid.Column="0" Content="회원 목록" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0"/>
-        
-        <Button x:Name="DeleteBtn" Grid.Row="1" Grid.Column="0" Content="선택 삭제"  Width="120" Height="40" HorizontalAlignment="Right" Margin="20,10,15,0" Click="DeleteBtnClick">
+
+        <Button x:Name="DeleteBtn" Grid.Row="1" Grid.Column="0" Content="선택 삭제"  Width="120" Height="40" HorizontalAlignment="Right" Margin="20,10,15,0" Command="{Binding DeleteBtn} "> <!--Click="DeleteBtnClick">--> 
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -56,7 +56,7 @@
             </Button.Resources>
         </Button>
         
-        <ListBox Name="UserlistBox" Grid.Row="2" Grid.Column="0" Margin="17,8,15,26" ItemsSource="{Binding Tables[0]}" ItemTemplate="{StaticResource UserListBoxTemplate}" 
+        <ListBox x:Name="UserlistBox" Grid.Row="2" Grid.Column="0" Margin="17,8,15,26" ItemsSource="{Binding UserList}" ItemTemplate="{StaticResource UserListBoxTemplate}" 
                  IsSynchronizedWithCurrentItem="True"/>
     </Grid>
 </Window>

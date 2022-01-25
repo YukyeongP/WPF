@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using WPF4.Model;
+using System.Windows;
 using WPF4.MainWindowViewModel;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace WPF4
 {
@@ -8,11 +11,9 @@ namespace WPF4
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         private void AddMemBtnClick(object sender, RoutedEventArgs e)

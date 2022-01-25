@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WPF4"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="600">
-    
+
     <UserControl.Resources>
         <Style TargetType="{x:Type TextBlock}" x:Key="TbkStyle">
             <Setter Property="TextWrapping" Value="Wrap"/>
@@ -24,7 +24,7 @@
             <Setter Property="Height" Value="25"/>
         </Style>
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -32,7 +32,7 @@
         </Grid.RowDefinitions>
 
         <Label x:Name="AddNewMemLabel" Grid.Row="0" Content="회원 정보 입력" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0"/>
-        
+
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -57,19 +57,20 @@
             <TextBlock Grid.Row="3" Grid.Column="0" Text="비고" Style="{StaticResource TbkStyle}" VerticalAlignment="Top"/>
 
             <!-- 사용자정보가 입력되는 곳 -->
-            <TextBox x:Name="TbxName" Grid.Row="0" Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}" />
+            <TextBox x:Name="TbxName" Grid.Row="0" Grid.Column="1" Text="{Binding Path = Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}" />
             <TextBox x:Name="TbxAddress" Grid.Row="0" Grid.Column="3" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}" />
             <TextBox x:Name="TbxAge" Grid.Row="1" Grid.Column="1" Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
             <TextBox x:Name="TbxPhoneNo" Grid.Row="2" Grid.Column="1" Text="{Binding PhoneNo, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
             <TextBox x:Name="TbxSex" Grid.Row="1" Grid.Column="3" Text="{Binding Sex, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
             <TextBox x:Name="TbxBday" Grid.Row="2" Grid.Column="3" Text="{Binding Birthday, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
-            <TextBox x:Name="TbxNote" Grid.Row="3" Grid.ColumnSpan="3" Text="{Binding Note, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="250" Height="160" FontSize="15" VerticalAlignment="Top"/>
+            <TextBox x:Name="TbxNote" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Note, UpdateSourceTrigger=PropertyChanged}" 
+                     Margin="30,5" Height="160" FontSize="15" VerticalAlignment="Top"/>
 
             <Grid Grid.Row="5" Grid.ColumnSpan="4">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <Button x:Name="RegisterBtn" Content="등록" Margin="5" Width="150" Height="40" />
                     <Button x:Name="CancelBtn" Content="취소" Margin="5" Width="150" Height="40" />
-            </StackPanel>
+                </StackPanel>
             </Grid>
         </Grid>
     </Grid>

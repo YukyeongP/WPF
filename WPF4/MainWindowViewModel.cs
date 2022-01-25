@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace WPF4.MainWindowViewModel
+namespace WPF4.MainViewModel
 {
     class MainWindowViewModel
     {
-        public ObservableCollection<UserInfo> userInfo = new ObservableCollection<UserInfo>();
+        public ObservableCollection<UserInfo> UserInfo = new ObservableCollection<UserInfo>();
 
         public MainWindowViewModel()
         {

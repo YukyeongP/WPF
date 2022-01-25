@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using WPF3.ViewModel;
+using System.Windows;
 
 namespace WPF3
 {
@@ -7,42 +8,24 @@ namespace WPF3
     /// </summary>
     public partial class MainWindow : Window
     {
-        UserWindow _userWindow = null;
+        private MainViewModel _viewModel;
 
         public MainWindow()
         {
             InitializeComponent();
-            AddMemBtn.Click += new RoutedEventHandler(AddMemberBtnClick);
-        }
-
-        public void UserWindowOnUserWindowTextInputEvent(UserInfo Parameters)
-        {
-            UserlistBox.Items.Add(Parameters);
-            if (_userWindow != null)
-            {
-                _userWindow.Close();
-                _userWindow.OnUserWindowTextInputEvent -= new UserWindow.OnUserWindowTextInputHandler(UserWindowOnUserWindowTextInputEvent);
-                _userWindow = null;
-            }
+            _viewModel = new MainViewModel();
+            DataContext = _viewModel;
         }
 
         private void AddMemberBtnClick(object sender, RoutedEventArgs e)
         {
-            if (_userWindow == null)
+            var wnd = new UserWindow();
+            wnd.Owner = this;
+            if (wnd.ShowDialog() != true)
             {
-                _userWindow = new UserWindow();
-                _userWindow.OnUserWindowTextInputEvent += new UserWindow.OnUserWindowTextInputHandler(UserWindowOnUserWindowTextInputEvent);
-
-                _userWindow.Top = this.Top + (this.ActualHeight - _userWindow.Height) / 2;
-                _userWindow.Left = this.Left + (this.ActualWidth - _userWindow.Width) / 2;
-                _userWindow.ShowDialog();
+                return;
             }
-        }
-
-        private void DeleteBtnClick(object sender, RoutedEventArgs e)
-        {
-            UserlistBox.Items.RemoveAt(UserlistBox.SelectedIndex);
-            UserlistBox.Items.Refresh();
+            _viewModel.UserList.Add(wnd.NewUser);
         }
     }
 }

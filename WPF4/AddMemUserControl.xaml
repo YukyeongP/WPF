@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="WPF4.AddMemUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF4"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="600">
+    
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBlock}" x:Key="TbkStyle">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Black"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}" x:Key="TbxStyle">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="AddNewMemLabel" Grid.Row="0" Content="회원 정보 입력" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0"/>
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="이름" Style="{StaticResource TbkStyle}" />
+            <TextBlock Grid.Row="0" Grid.Column="2" Text="거주지" Style="{StaticResource TbkStyle}" />
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="나이" Style="{StaticResource TbkStyle}"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="성별" Style="{StaticResource TbkStyle}" />
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="휴대폰" Style="{StaticResource TbkStyle}"/>
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="생년월일" Style="{StaticResource TbkStyle}"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="비고" Style="{StaticResource TbkStyle}" VerticalAlignment="Top"/>
+
+            <!-- 사용자정보가 입력되는 곳 -->
+            <TextBox x:Name="TbxName" Grid.Row="0" Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}" />
+            <TextBox x:Name="TbxAddress" Grid.Row="0" Grid.Column="3" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}" />
+            <TextBox x:Name="TbxAge" Grid.Row="1" Grid.Column="1" Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
+            <TextBox x:Name="TbxPhoneNo" Grid.Row="2" Grid.Column="1" Text="{Binding PhoneNo, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
+            <TextBox x:Name="TbxSex" Grid.Row="1" Grid.Column="3" Text="{Binding Sex, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
+            <TextBox x:Name="TbxBday" Grid.Row="2" Grid.Column="3" Text="{Binding Birthday, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
+            <TextBox x:Name="TbxNote" Grid.Row="3" Grid.ColumnSpan="3" Text="{Binding Note, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="250" Height="160" FontSize="15" VerticalAlignment="Top"/>
+
+            <Grid Grid.Row="5" Grid.ColumnSpan="4">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Button x:Name="RegisterBtn" Content="등록" Margin="5" Width="150" Height="40" />
+                    <Button x:Name="CancelBtn" Content="취소" Margin="5" Width="150" Height="40" />
+            </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

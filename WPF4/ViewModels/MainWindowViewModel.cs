@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using WPF4.Model;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Prism.Commands;
 using System.ComponentModel;
+using System.Windows.Input;
+using WPF4.Views;
 
-namespace WPF4.MainViewModel
+namespace WPF4.ViewModels
 {
-    class MainWindowViewModel
+    class MainWindowViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<UserInfo> UserInfo = new ObservableCollection<UserInfo>();
-
         public MainWindowViewModel()
         {
-
         }
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
         {
@@ -27,5 +20,7 @@ namespace WPF4.MainViewModel
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
+
+
     }
 }

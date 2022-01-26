@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using WPF4.ViewModels;
 using System.Windows.Controls;
 
-namespace WPF4
+namespace WPF4.Views
 {
     /// <summary>
     /// Interaction logic for MemListUserControl.xaml
@@ -16,6 +11,7 @@ namespace WPF4
         public MemListUserControl()
         {
             InitializeComponent();
+            DataContext = new MemListViewModel();
         }
     }
 }

@@ -1,10 +1,7 @@
-﻿using WPF4.Model;
-using System.Windows;
-using WPF4.MainWindowViewModel;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Windows;
+using WPF4.ViewModels;
 
-namespace WPF4
+namespace WPF4.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -14,13 +11,27 @@ namespace WPF4
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel();
         }
 
+        // command, command parameter
+   /*     private void selectViewModel(string name)
+        {
+            if (name == "AddMemBtn")
+            {
+                DataContext = new AddMemViewModel();
+            }
+            if (name == "MemListBtn")
+            {
+                DataContext = new MemListViewModel();
+            }
+        }
+*/
         private void AddMemBtnClick(object sender, RoutedEventArgs e)
         {
             MemListUC.Visibility = Visibility.Hidden;
             AddUserUC.Visibility = Visibility.Visible;
-        } 
+        }
 
         private void MemListBtnClick(object sender, RoutedEventArgs e)
         {

@@ -22,7 +22,8 @@ namespace WPF4.Models
 
         public static void AddUser(UserInfo user)
         {
-            _users.Add(user);
+            if (user != null)
+                _users.Add(user);
         }
     }
 }

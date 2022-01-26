@@ -1,21 +1,35 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using WPF4.Models;
 using System.Windows;
-using WPF4.Models;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Prism.Commands;
 
 namespace WPF4.ViewModels
 {
     public class MemListViewModel
     {
         public ObservableCollection<UserInfo> Users { get; } = UserDataSource.GetUsers();
-        public UserInfo selectedUser; 
+        public UserInfo SelectedUser;
+        public ICommand Delete { get; set; }
         public Visibility IsVisible { get; set; }
 
         public MemListViewModel()
         {
+            Delete = new DelegateCommand<object>(DeleteBtnClick);
         }
 
-        private Visibility _visibilty;
+        public void DeleteBtnClick(object obj)
+        {
+            if (SelectedUser == null)
+            {
+                return;
+            }
+
+            Users.Remove(SelectedUser);
+        }
+
+        private Visibility _visibilty = Visibility.Hidden;
         public Visibility Visibility
         {
             get

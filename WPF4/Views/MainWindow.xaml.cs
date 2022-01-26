@@ -15,18 +15,18 @@ namespace WPF4.Views
         }
 
         // command, command parameter
-   /*     private void selectViewModel(string name)
-        {
-            if (name == "AddMemBtn")
-            {
-                DataContext = new AddMemViewModel();
-            }
-            if (name == "MemListBtn")
-            {
-                DataContext = new MemListViewModel();
-            }
-        }
-*/
+        /*     private void selectViewModel(string name)
+             {
+                 if (name == "AddMemBtn")
+                 {
+                     DataContext = new AddMemViewModel();
+                 }
+                 if (name == "MemListBtn")
+                 {
+                     DataContext = new MemListViewModel();
+                 }
+             }
+     */
         private void AddMemBtnClick(object sender, RoutedEventArgs e)
         {
             MemListUC.Visibility = Visibility.Hidden;

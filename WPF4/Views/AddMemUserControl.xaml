@@ -28,7 +28,7 @@
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="회원 정보 입력" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0"/>
+        <TextBlock Grid.Row="0" Text="회원 정보 입력" Margin="20,0,10,20" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
@@ -61,9 +61,9 @@
             <TextBox x:Name="TbxSex" Grid.Row="1" Grid.Column="3" Text="{Binding NewUser.Sex, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
             <TextBox x:Name="TbxBday" Grid.Row="2" Grid.Column="3" Text="{Binding NewUser.Birthday, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
             <TextBox x:Name="TbxNote" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding NewUser.Note, UpdateSourceTrigger=PropertyChanged}" 
-                     Margin="25, 5" FontSize="15" Height="170" VerticalAlignment="Top"/>
+                     Margin="25,5,25,0" FontSize="15" Height="145" VerticalAlignment="Top"/>
 
-            <Grid Grid.Row="4" Grid.ColumnSpan="4">
+            <Grid Grid.Row="3" Grid.ColumnSpan="4" Margin="0,170,0,0" Grid.RowSpan="2">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <Button x:Name="RegisterBtn" Content="등록" Margin="5" Width="150" Height="40" Command="{Binding Register}" />
                     <Button x:Name="CancelBtn" Content="취소" Margin="5" Width="150" Height="40" />

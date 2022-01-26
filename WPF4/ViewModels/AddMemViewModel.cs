@@ -19,7 +19,7 @@ namespace WPF4.ViewModels
             Register = new DelegateCommand(RegisterBtnClick);
         }
 
-        private Visibility _visibilty;
+        private Visibility _visibilty = Visibility.Visible;
         public Visibility Visibility
         {
             get
@@ -33,13 +33,25 @@ namespace WPF4.ViewModels
             }
         }
 
+        public void SetVisibility(bool visible)
+        {
+            if (visible)
+                Visibility = Visibility.Visible;
+            else
+                Visibility = Visibility.Collapsed;
+        }
+
         public void RegisterBtnClick()
         {
-            UserDataSource.AddUser(NewUser);           
+            UserDataSource.AddUser(NewUser);
+
+            // MemListUserControl 보여주기
+            this._visibilty = Visibility.Hidden;
         }
 
         private void CancelBtnClick()
         {
+            // textbox reset
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

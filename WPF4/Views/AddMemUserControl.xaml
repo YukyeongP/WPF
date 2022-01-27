@@ -5,9 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF4"
              mc:Ignorable="d" 
-             d:DesignHeight="550" d:DesignWidth="800" Visibility="{Binding IsVisible}">
+             d:DesignHeight="550" d:DesignWidth="800">
 
     <UserControl.Resources>
+
         <Style TargetType="{x:Type TextBlock}" x:Key="TbkStyle">
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -54,19 +55,19 @@
             <TextBlock Grid.Row="3" Grid.Column="0" Text="비고" Style="{StaticResource TbkStyle}" Margin="0, 10" VerticalAlignment="Top"/>
 
             <!-- 사용자정보가 입력되는 곳 -->
-            <TextBox x:Name="TbxName" Grid.Row="0" Grid.Column="1" Text="{Binding Path=NewUser.Name}" Style="{StaticResource TbxStyle}" />
-            <TextBox x:Name="TbxAddress" Grid.Row="0" Grid.Column="3" Text="{Binding NewUser.Address, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}" />
-            <TextBox x:Name="TbxAge" Grid.Row="1" Grid.Column="1" Text="{Binding NewUser.Age, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
-            <TextBox x:Name="TbxPhoneNo" Grid.Row="2" Grid.Column="1" Text="{Binding NewUser.PhoneNo, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
-            <TextBox x:Name="TbxSex" Grid.Row="1" Grid.Column="3" Text="{Binding NewUser.Sex, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
-            <TextBox x:Name="TbxBday" Grid.Row="2" Grid.Column="3" Text="{Binding NewUser.Birthday, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbxStyle}"/>
-            <TextBox x:Name="TbxNote" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding NewUser.Note, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox x:Name="TbxName" Grid.Row="0" Grid.Column="1" Text="{Binding NewUser.Name}" Style="{StaticResource TbxStyle}" />
+            <TextBox x:Name="TbxAddress" Grid.Row="0" Grid.Column="3" Text="{Binding NewUser.Address}" Style="{StaticResource TbxStyle}" />
+            <TextBox x:Name="TbxAge" Grid.Row="1" Grid.Column="1" Text="{Binding NewUser.Age}" Style="{StaticResource TbxStyle}"/>
+            <TextBox x:Name="TbxPhoneNo" Grid.Row="2" Grid.Column="1" Text="{Binding NewUser.PhoneNo}" Style="{StaticResource TbxStyle}"/>
+            <TextBox x:Name="TbxSex" Grid.Row="1" Grid.Column="3" Text="{Binding NewUser.Sex}" Style="{StaticResource TbxStyle}"/>
+            <TextBox x:Name="TbxBday" Grid.Row="2" Grid.Column="3" Text="{Binding NewUser.Birthday}" Style="{StaticResource TbxStyle}"/>
+            <TextBox x:Name="TbxNote" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding NewUser.Note}" 
                      Margin="25,5,25,0" FontSize="15" Height="145" VerticalAlignment="Top"/>
 
             <Grid Grid.Row="3" Grid.ColumnSpan="4" Margin="0,170,0,0" Grid.RowSpan="2">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                    <Button x:Name="RegisterBtn" Content="등록" Margin="5" Width="150" Height="40" Command="{Binding Register}" />
-                    <Button x:Name="CancelBtn" Content="취소" Margin="5" Width="150" Height="40" />
+                    <Button x:Name="RegisterButton" Content="등록" Margin="5" Width="150" Height="40" Command="{Binding Register}"/>
+                    <Button x:Name="CancelButton" Content="취소" Margin="5" Width="150" Height="40" Command="{Binding Cancel}"/>
                 </StackPanel>
             </Grid>
         </Grid>

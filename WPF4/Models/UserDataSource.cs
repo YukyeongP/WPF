@@ -1,10 +1,13 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace WPF4.Models
 {
-    public class UserDataSource
+    public class UserDataSource : INotifyPropertyChanged
     {
-        private static ObservableCollection<UserInfo> _users = new ObservableCollection<UserInfo>();
+        private static ObservableCollection<UserInfo> _users { get; } = new ObservableCollection<UserInfo>();
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public UserDataSource()
         {
         }
@@ -17,13 +20,13 @@ namespace WPF4.Models
 
         public static void RemoveUser(UserInfo user)
         {
-            _users.Remove(user);
+            _users.Remove(user);    
         }
 
         public static void AddUser(UserInfo user)
         {
             if (user != null)
                 _users.Add(user);
-        }
+        }       
     }
 }

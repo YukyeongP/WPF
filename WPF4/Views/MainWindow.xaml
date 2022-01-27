@@ -17,15 +17,17 @@
             <ColumnDefinition Width="610"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="AddMemBtn" Grid.Row="0" Grid.Column="0" Content="신규 회원 등록" Width="120" Height="40" HorizontalAlignment="Left" 
-                Margin="20,20,0,10" VerticalAlignment="Center" Click="AddMemBtnClick" />
-        <Button x:Name="MemListBtn" Grid.Row="0" Grid.Column="1" Content="회원 목록" Width="120" Height="40" HorizontalAlignment="Left" 
-                Margin="2,20,0,10" VerticalAlignment="Center" Click="MemListBtnClick" />
+        <Button x:Name="AddMemButton" Grid.Row="0" Grid.Column="0" Content="신규 회원 등록" Width="120" Height="40" HorizontalAlignment="Left" 
+                Margin="20,20,0,10" VerticalAlignment="Center" Click="AddMemBtnClick" Command="{Binding RegisterMenu}" />
+        <Button x:Name="MemListButton" Grid.Row="0" Grid.Column="1" Content="회원 목록" Width="120" Height="40" HorizontalAlignment="Left" 
+                Margin="2,20,0,10" VerticalAlignment="Center" Click="MemListBtnClick" Command="{Binding UserListMenu}" />
 
         <!-- 회원정보입력 -->
         <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0.333,0.333,-0.333">
-            <local:AddMemUserControl x:Name="AddUserUC" Visibility="{Binding IsVisiable}" />
-            <local:MemListUserControl x:Name="MemListUC" Visibility="{Binding IsVisiable}" />
+            <local:AddMemUserControl x:Name="AddUserControl" Visibility="Visible"/>
+            <!-- Visibility="{Binding AddMemUCIsVisible} "/> -->
+            <local:MemListUserControl x:Name="MemListControl" Visibility="Collapsed"/>
+                <!-- Visibility="{Binding MemListUCIsVisible}" /> -->
         </Grid>
     </Grid>
 </Window>

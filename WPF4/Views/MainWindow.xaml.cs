@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 using WPF4.ViewModels;
 
 namespace WPF4.Views
@@ -14,29 +15,16 @@ namespace WPF4.Views
             DataContext = new MainWindowViewModel();
         }
 
-        // command, command parameter
-        /*     private void selectViewModel(string name)
-             {
-                 if (name == "AddMemBtn")
-                 {
-                     DataContext = new AddMemViewModel();
-                 }
-                 if (name == "MemListBtn")
-                 {
-                     DataContext = new MemListViewModel();
-                 }
-             }
-     */
         private void AddMemBtnClick(object sender, RoutedEventArgs e)
         {
-            MemListUC.Visibility = Visibility.Hidden;
-            AddUserUC.Visibility = Visibility.Visible;
+            MemListControl.Visibility = Visibility.Hidden;
+            AddUserControl.Visibility = Visibility.Visible;
         }
 
         private void MemListBtnClick(object sender, RoutedEventArgs e)
         {
-            AddUserUC.Visibility = Visibility.Hidden;
-            MemListUC.Visibility = Visibility.Visible;
+            AddUserControl.Visibility = Visibility.Hidden;
+            MemListControl.Visibility = Visibility.Visible;
         }
     }
 }

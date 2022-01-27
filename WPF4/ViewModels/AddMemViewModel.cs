@@ -1,57 +1,43 @@
 ﻿using WPF4.Models;
 using Prism.Commands;
-using System.Windows;
-using System.Windows.Input;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace WPF4.ViewModels
 {
-    class AddMemViewModel
+    public class AddMemViewModel:INotifyPropertyChanged
     {
-        public UserInfo NewUser { get; } = new UserInfo();
-        public ICommand Register { get; set; }
-        //public UserInfo selectedUser;
+        private UserInfo _newUser;
 
-        public Visibility IsVisible { get; set; }
+        public UserInfo NewUser 
+        {
+            get => _newUser;
+            set
+            {
+                _newUser = value;
+                OnPropertyChanged(nameof(NewUser));
+            }
+        } 
+
+        public ICommand Register { get; set; }
+        public ICommand Cancel { get; set; }
 
         public AddMemViewModel()
         {
+            NewUser = new UserInfo();
+
             Register = new DelegateCommand(RegisterBtnClick);
-        }
-
-        private Visibility _visibilty = Visibility.Visible;
-        public Visibility Visibility
-        {
-            get
-            {
-                return _visibilty;
-            }
-            set
-            {
-                _visibilty = value;
-                OnPropertyChanged(nameof(Visibility));
-            }
-        }
-
-        public void SetVisibility(bool visible)
-        {
-            if (visible)
-                Visibility = Visibility.Visible;
-            else
-                Visibility = Visibility.Collapsed;
+            Cancel = new DelegateCommand(CancelBtnClick);
         }
 
         public void RegisterBtnClick()
         {
-            UserDataSource.AddUser(NewUser);
-
-            // MemListUserControl 보여주기
-            this._visibilty = Visibility.Hidden;
+            UserDataSource.AddUser(new UserInfo(NewUser.Name, NewUser.Address, NewUser.Sex, NewUser.Birthday, NewUser.Age, NewUser.PhoneNo, NewUser.Note));
+            NewUser = new UserInfo();
         }
 
-        private void CancelBtnClick()
+        public void CancelBtnClick()
         {
-            // textbox reset
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

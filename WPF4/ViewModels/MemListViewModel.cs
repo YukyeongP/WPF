@@ -5,23 +5,32 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Prism.Commands;
 using WPF4.Views;
+using System;
 
 namespace WPF4.ViewModels
 {
     public class MemListViewModel :INotifyPropertyChanged
     {
         public ObservableCollection<UserInfo> Users { get; } = UserDataSource.GetUsers();
-        public UserInfo SelectedUser { get; set; } 
         public ICommand Delete { get; set; }
+
+        private UserInfo selectedUser;
+        public UserInfo SelectedUser
+        {
+            get => selectedUser;
+            set
+            {
+                selectedUser = value;
+                OnPropertyChanged(nameof(SelectedUser));
+            }
+        }
 
         // SelctedUser를 MemListUserControl에 Binding 
         public MemListViewModel()
         {
             Delete = new DelegateCommand<object>(DeleteButtonClick);
-            //SelectedUser = new UserInfo("b", "b", "cc", "d", "e", "f", "g");
         }
 
-        
         public void DeleteButtonClick(object obj)
         {
             if (SelectedUser == null)

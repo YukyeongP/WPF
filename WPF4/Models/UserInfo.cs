@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace WPF4.Models
 {
@@ -22,9 +23,45 @@ namespace WPF4.Models
             set
             {
                 _age = value;
+
+                if (!int.TryParse(_age, out int res))
+                {
+                    throw new Exception();
+                }
+
+                //(10 <= int.Parse(_age) && int.Parse(_age) < 20) ? AgeRange="10대": (20 <= int.Parse(_age) && int.Parse(_age) < 30) ? AgeRange="20대" :
+
+                if (10 <= int.Parse(_age) && int.Parse(_age) < 20)
+                {
+                    AgeRange = "10대";
+                }
+                else if (20 <= int.Parse(_age) && int.Parse(_age) < 30)
+                {
+                    AgeRange = "20대";
+                }
+                else if (30 <= int.Parse(_age) && int.Parse(_age) < 40)
+                {
+                    AgeRange = "30대";
+                } else if (40 <= int.Parse(_age) && int.Parse(_age) < 50)
+                {
+                    AgeRange = "40대";
+                }
+
                 OnPropertyChanged(nameof(Age));
             }
         }
+
+        private string _ageRange;
+        public string AgeRange
+        {
+            get => _ageRange;
+            set 
+            {
+                _ageRange = value;
+                OnPropertyChanged(nameof(AgeRange));
+            }
+        }
+
 
         private string _phoneNo;
         public string PhoneNo

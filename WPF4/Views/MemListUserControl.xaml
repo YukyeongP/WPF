@@ -9,11 +9,13 @@
 
     <UserControl.Resources>
         <DataTemplate x:Key="TreeViewTemplate" DataType="Models.UserInfo">
-            <TreeViewItem Header="{Binding Age}">
-                <TextBlock x:Name="TreviewName" Text ="{Binding Name, Mode=OneWay}" FontSize="13" />
+            <TreeViewItem Header="{Binding AgeRange}">
+                <StackPanel>
+                    <ListBoxItem x:Name="ItemNameListBoxItem" Content ="{Binding Name, Mode=OneWay}" FontSize="13"/>
+                </StackPanel>
             </TreeViewItem>
         </DataTemplate>
-        
+
         <Style TargetType="{x:Type TextBlock}" x:Key="TbkStyle">
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="Margin" Value="5"/>
@@ -43,11 +45,23 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock x:Name="MemListLabel" Grid.Row="0" Grid.Column="0" Margin="20,0,10,20" Text="회원 목록" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <TreeView x:Name="UserTreeView" Grid.Row="1" Grid.Column="0" Margin="20,0,10,20" ItemsSource="{Binding Users}" ItemTemplate="{StaticResource TreeViewTemplate}"
-                  SelectedItemChanged="TreeViewSelectionChanged">
+        <!--<TreeView x:Name="UserTreeView" Grid.Row="1" Grid.Column="0" Margin="20,0,10,20" ItemsSource="{Binding Users}" ItemTemplate="{StaticResource TreeViewTemplate}"
+                  SelectedItemChanged="TreeViewSelectionChanged">      
+        </TreeView>-->
+
+        <TreeView x:Name="UserTreeView" Grid.Row="1" Grid.Column="0" Margin="20,0,10,20" ItemTemplate="{StaticResource TreeViewTemplate}">
+            <TreeView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding AgeRange}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </TreeView.GroupStyle>
         </TreeView>
 
-        <TextBlock x:Name="MemInfoLabel" Grid.Row="0" Grid.Column="1" Margin="20,0,10,20" Text="회원 정보" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock x:Name="MemInfoLabel" Grid.Row="0" Grid.Column="1" Margin="20,0,10,20" Text="회원 정보" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Grid Grid.Row="1" Grid.Column="1" Margin="10,0" HorizontalAlignment="Left">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
@@ -74,13 +88,13 @@
             <TextBlock Grid.Row="6" Grid.Column="0" Text="비고" Style="{StaticResource TbkStyle}"/>
 
             <!-- 사용자정보가 입력되는 곳 -->
-            <TextBox x:Name="TbxName" Grid.Row="0" Grid.Column="1" Text="{Binding selectedUser.Name}" Style="{StaticResource TbxStyle}" />
-            <TextBox x:Name="TbxAddress" Grid.Row="1" Grid.Column="1" Text="{Binding selectedUser.Address}" Style="{StaticResource TbxStyle}" />
-            <TextBox x:Name="TbxSex" Grid.Row="2" Grid.Column="1"  Text="{Binding selectedUser.Sex}" Style="{StaticResource TbxStyle}"/>
-            <TextBox x:Name="TbxBday" Grid.Row="3" Grid.Column="1" Text="{Binding selectedUser.Birthday}" Style="{StaticResource TbxStyle}"/>
-            <TextBox x:Name="TbxAge" Grid.Row="4" Grid.Column="1" Text="{Binding selectedUser.Age}" Style="{StaticResource TbxStyle}"/>
-            <TextBox x:Name="TbxPhoneNo" Grid.Row="5" Grid.Column="1" Text="{Binding selectedUser.PhoneNo}" Style="{StaticResource TbxStyle}"/>
-            <TextBox x:Name="TbxNote" Grid.Row="6" Grid.Column="1" Height="Auto" Text="{Binding selectedUser.Note}" Style="{StaticResource TbxStyle}" Margin="26,10,26,25"/>
+            <TextBox x:Name="TbxName" Grid.Row="0" Grid.Column="1" Text="{Binding SelectedUser.Name}" Style="{StaticResource TbxStyle}" />
+            <TextBox x:Name="TbxAddress" Grid.Row="1" Grid.Column="1" Text="{Binding SelectedUser.Address}" Style="{StaticResource TbxStyle}" />
+            <TextBox x:Name="TbxSex" Grid.Row="2" Grid.Column="1"  Text="{Binding SelectedUser.Sex}" Style="{StaticResource TbxStyle}"/>
+            <TextBox x:Name="TbxBday" Grid.Row="3" Grid.Column="1" Text="{Binding SelectedUser.Birthday}" Style="{StaticResource TbxStyle}"/>
+            <TextBox x:Name="TbxAge" Grid.Row="4" Grid.Column="1" Text="{Binding SelectedUser.Age}" Style="{StaticResource TbxStyle}"/>
+            <TextBox x:Name="TbxPhoneNo" Grid.Row="5" Grid.Column="1" Text="{Binding SelectedUser.PhoneNo}" Style="{StaticResource TbxStyle}"/>
+            <TextBox x:Name="TbxNote" Grid.Row="6" Grid.Column="1" Height="Auto" Text="{Binding SelectedUser.Note}" Style="{StaticResource TbxStyle}" Margin="26,10,26,25"/>
 
             <Button x:Name="DeleteButton" Grid.Row="7" Content="삭제하기" Width="130" Height="30" Margin="0,0,26,0"
                         HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Grid.RowSpan="2" Command="{Binding Delete}"/>

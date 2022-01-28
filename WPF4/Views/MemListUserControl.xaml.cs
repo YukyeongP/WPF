@@ -1,8 +1,10 @@
 ﻿using System;
-using WPF4.Models;
 using System.Windows;
-using WPF4.ViewModels;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Input;
+using WPF4.Models;
+using WPF4.ViewModels;
 
 namespace WPF4.Views
 {
@@ -17,13 +19,14 @@ namespace WPF4.Views
             DataContext = new MemListViewModel();
         }
 
-        // 이 값을 MemListUserControl의 TbxName에 binding 
         public void TreeViewSelectionChanged(object sender, RoutedPropertyChangedEventArgs<Object> e)
         {
-            var selectedUser = new UserInfo();
-            selectedUser = (UserInfo)e.NewValue;
+            var vm = DataContext as MemListViewModel;
+            vm.SelectedUser = (UserInfo)e.NewValue;
+        }
 
-//            TbxName.Text = selectedUser.Name;
+        public void TreeViewItemSelectionChanged(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

@@ -18,10 +18,10 @@ namespace WPF4.Views
         }
 
         // 이 값을 MemListUserControl의 TbxName에 binding 
-        public UserInfo TreeViewSelectionChanged(object sender, RoutedPropertyChangedEventArgs<Object> e)
+        public void TreeViewSelectionChanged(object sender, RoutedPropertyChangedEventArgs<Object> e)
         {
-            var selectedUser =new UserInfo();
-            return selectedUser = (UserInfo)e.NewValue;
+            var selectedUser = new UserInfo();
+            selectedUser = (UserInfo)e.NewValue;
 
 //            TbxName.Text = selectedUser.Name;
         }

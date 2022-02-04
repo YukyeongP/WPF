@@ -37,7 +37,6 @@ namespace WPF4.ViewModels
             {
                 return;
             }
-
             Users.Remove(SelectedUser);
         }
 

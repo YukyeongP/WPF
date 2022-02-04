@@ -10,21 +10,8 @@ namespace WPF4.Views
     {
         public AddMemUserControl()
         {
-            InitializeComponent();            
+            InitializeComponent();
             DataContext = new AddMemViewModel();
         }
-
-        /* public string Name
-         {
-             get { return (string)GetValue(NameProperty); }
-             set
-             {
-                 SetValue(NameProperty, value);
-             }
-         }
-
-         private static DependencyProperty NameProperty = DependencyProperty.Register("Name", typeof(string), typeof(AddMemUserControl),
-             new FrameworkPropertyMetadata(string.Empty,
-                 FrameworkPropertyMetadataOptions.Inherits));*/
     }
 }

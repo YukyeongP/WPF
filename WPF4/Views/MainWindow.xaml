@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:WPF4.Views"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="550" Width="800" MinHeight="530" MinWidth="740">
-    
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:AddMemUserControl}">
+            <local:AddMemUserControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:MemListUserControl}">
+            <local:MemListUserControl/>
+        </DataTemplate>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
@@ -17,17 +25,21 @@
             <ColumnDefinition Width="610"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="AddMemButton" Grid.Row="0" Grid.Column="0" Content="신규 회원 등록" Width="120" Height="40" HorizontalAlignment="Left" 
-                Margin="20,20,0,10" VerticalAlignment="Center" Click="AddMemBtnClick" Command="{Binding RegisterMenu}" />
-        <Button x:Name="MemListButton" Grid.Row="0" Grid.Column="1" Content="회원 목록" Width="120" Height="40" HorizontalAlignment="Left" 
-                Margin="2,20,0,10" VerticalAlignment="Center" Click="MemListBtnClick" Command="{Binding UserListMenu}" />
+        <RadioButton x:Name="AddMemButton" Grid.Row="0" Grid.Column="0" Content="신규 회원 등록" Width="140" Height="40" HorizontalAlignment="Left" 
+                Margin="20,20,0,10" VerticalAlignment="Center" Background="LightSkyBlue" Click="AddMemBtnClick" Style="{StaticResource {x:Type ToggleButton}}"
+                />
+        <RadioButton x:Name="MemListButton" Grid.Row="0" Grid.Column="1" Content="회원 목록" Width="140" Height="40" HorizontalAlignment="Left" 
+                Margin="2,20,0,10" VerticalAlignment="Center" Click="MemListBtnClick" Style="{StaticResource {x:Type ToggleButton}}"
+                    />
 
-        <!-- 회원정보입력 -->
         <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0.333,0.333,-0.333">
             <local:AddMemUserControl x:Name="AddUserControl" Visibility="Visible"/>
-            <!-- Visibility="{Binding AddMemUCIsVisible} "/> -->
+             <!--Visibility="{Binding AddMemUCIsVisible} "/>--> 
             <local:MemListUserControl x:Name="MemListControl" Visibility="Collapsed"/>
-                <!-- Visibility="{Binding MemListUCIsVisible}" /> -->
+                 <!--Visibility="{Binding MemListUCIsVisible}" />--> 
         </Grid>
+
+        <!--<ContentControl Content="{Binding CurrentViewModel}" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0.333,0.333,-0.333"></ContentControl>-->
+        
     </Grid>
 </Window>

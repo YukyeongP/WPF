@@ -30,6 +30,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="회원 정보 입력" Margin="20,0,10,20" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Line X1="20" Y1="45" X2="750" Y2="45" Stroke="Gray"/>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>

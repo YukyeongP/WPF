@@ -26,12 +26,15 @@ namespace WPF4.Models
 
                 if (!int.TryParse(_age, out int res))
                 {
-                    throw new Exception();
+                    throw new Exception("숫자를 입력하세요.");
                 }
 
                 //(10 <= int.Parse(_age) && int.Parse(_age) < 20) ? AgeRange="10대": (20 <= int.Parse(_age) && int.Parse(_age) < 30) ? AgeRange="20대" :
-
-                if (10 <= int.Parse(_age) && int.Parse(_age) < 20)
+                if (0 <= int.Parse(_age) && int.Parse(_age) < 10)
+                {
+                    AgeRange = "10대 미만";
+                }
+                else if (10 <= int.Parse(_age) && int.Parse(_age) < 20)
                 {
                     AgeRange = "10대";
                 }
@@ -42,9 +45,18 @@ namespace WPF4.Models
                 else if (30 <= int.Parse(_age) && int.Parse(_age) < 40)
                 {
                     AgeRange = "30대";
-                } else if (40 <= int.Parse(_age) && int.Parse(_age) < 50)
+                } 
+                else if (40 <= int.Parse(_age) && int.Parse(_age) < 50)
                 {
                     AgeRange = "40대";
+                } 
+                else if (50 <= int.Parse(_age) && int.Parse(_age) < 60)
+                {
+                    AgeRange = "50대";
+                }
+                else
+                {
+                    AgeRange = "50대 이상";
                 }
 
                 OnPropertyChanged(nameof(Age));

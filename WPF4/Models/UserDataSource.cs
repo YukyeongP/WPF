@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace WPF4.Models
@@ -11,12 +12,15 @@ namespace WPF4.Models
         public UserDataSource()
         {
         }
+        public IEnumerable<UserInfo> UserList
+        {
+            get { return _users; }
+        }
 
         public static ObservableCollection<UserInfo> GetUsers()
         {
             return _users;
         }
-
 
         public static void RemoveUser(UserInfo user)
         {

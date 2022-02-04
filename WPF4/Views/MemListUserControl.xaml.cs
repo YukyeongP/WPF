@@ -22,11 +22,14 @@ namespace WPF4.Views
         public void TreeViewSelectionChanged(object sender, RoutedPropertyChangedEventArgs<Object> e)
         {
             var vm = DataContext as MemListViewModel;
-            vm.SelectedUser = (UserInfo)e.NewValue;
-        }
-
-        public void TreeViewItemSelectionChanged(object sender, RoutedEventArgs e)
-        {
+            if (e.NewValue is UserInfo userInfo)
+            {
+                vm.SelectedUser = userInfo;
+            }
+            else
+            {
+                vm.SelectedUser = null;
+            }
         }
     }
 }

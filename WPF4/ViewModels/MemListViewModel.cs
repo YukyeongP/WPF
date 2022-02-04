@@ -1,11 +1,8 @@
 ﻿using WPF4.Models;
-using System.Windows;
+using Prism.Commands;
+using System.Windows.Input;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
-using Prism.Commands;
-using WPF4.Views;
-using System;
 
 namespace WPF4.ViewModels
 {

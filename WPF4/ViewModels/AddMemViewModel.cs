@@ -41,6 +41,7 @@ namespace WPF4.ViewModels
 
         public void CancelBtnClick()
         {
+            NewUser = new UserInfo();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

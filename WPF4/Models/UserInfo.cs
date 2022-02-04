@@ -24,12 +24,12 @@ namespace WPF4.Models
             {
                 _age = value;
 
-                if (!int.TryParse(_age, out int res))
+                if (!int.TryParse(_age, out int res) || (0 >= int.Parse(_age) || 130 < int.Parse(_age)))
                 {
-                    throw new Exception("숫자를 입력하세요.");
+                    throw new Exception("나이를 입력하세요.");
                 }
 
-                //(10 <= int.Parse(_age) && int.Parse(_age) < 20) ? AgeRange="10대": (20 <= int.Parse(_age) && int.Parse(_age) < 30) ? AgeRange="20대" :
+                    //(10 <= int.Parse(_age) && int.Parse(_age) < 20) ? AgeRange="10대": (20 <= int.Parse(_age) && int.Parse(_age) < 30) ? AgeRange="20대" :
                 if (0 <= int.Parse(_age) && int.Parse(_age) < 10)
                 {
                     AgeRange = "10대 미만";

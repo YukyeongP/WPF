@@ -2,7 +2,6 @@
 using Prism.Commands;
 using System.ComponentModel;
 using System.Windows.Input;
-using System.Collections.ObjectModel;
 
 namespace WPF4.ViewModels
 {
@@ -20,23 +19,6 @@ namespace WPF4.ViewModels
             AddMemUCIsVisible = Visibility.Visible;
             //MemListUCIsVisible = Visibility.Collapsed;
         }
-
-
-        //private int switchView;
-        //public int SwitchView
-        //{
-        //    get => switchView;
-        //    set
-        //    {
-        //        switchView = value;
-        //        OnPropertyChanged(nameof(SwitchView));
-        //    }
-        //}
-
-        //private void OnSwitchView(object index)
-        //{
-        //    SwitchView = int.Parse(index.ToString());
-        //}
 
         private Visibility _addMemUCIsVisible;
         public Visibility AddMemUCIsVisible
@@ -87,5 +69,21 @@ namespace WPF4.ViewModels
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
+
+        //private int switchView;
+        //public int SwitchView
+        //{
+        //    get => switchView;
+        //    set
+        //    {
+        //        switchView = value;
+        //        OnPropertyChanged(nameof(SwitchView));
+        //    }
+        //}
+
+        //private void OnSwitchView(object index)
+        //{
+        //    SwitchView = int.Parse(index.ToString());
+        //}
     }
 }

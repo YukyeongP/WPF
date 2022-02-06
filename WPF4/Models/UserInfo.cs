@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Windows;
 
 namespace WPF4.Models
 {
@@ -26,10 +27,11 @@ namespace WPF4.Models
 
                 if (!int.TryParse(_age, out int res) || (0 >= int.Parse(_age) || 130 < int.Parse(_age)))
                 {
-                    throw new Exception("나이를 입력하세요.");
+                    MessageBox.Show("나이를 다시 확인해주세요.", "Warning");
+                    return;
                 }
 
-                    //(10 <= int.Parse(_age) && int.Parse(_age) < 20) ? AgeRange="10대": (20 <= int.Parse(_age) && int.Parse(_age) < 30) ? AgeRange="20대" :
+                //(10 <= int.Parse(_age) && int.Parse(_age) < 20) ? AgeRange="10대": (20 <= int.Parse(_age) && int.Parse(_age) < 30) ? AgeRange="20대" :
                 if (0 <= int.Parse(_age) && int.Parse(_age) < 10)
                 {
                     AgeRange = "10대 미만";
@@ -54,11 +56,25 @@ namespace WPF4.Models
                 {
                     AgeRange = "50대";
                 }
-                else
+                else if (60 <= int.Parse(_age) && int.Parse(_age) < 70)
                 {
-                    AgeRange = "50대 이상";
+                    AgeRange = "60대";
                 }
-
+                else if (70 <= int.Parse(_age) && int.Parse(_age) < 80)
+                {
+                    AgeRange = "70대";
+                }
+                else if (80 <= int.Parse(_age) && int.Parse(_age) < 90)
+                {
+                    AgeRange = "80대";
+                }
+                else if (90 <= int.Parse(_age) && int.Parse(_age) < 100)
+                {
+                    AgeRange = "90대";
+                }else
+                {
+                    AgeRange = "90대 이상";
+                }
                 OnPropertyChanged(nameof(Age));
             }
         }
@@ -116,6 +132,11 @@ namespace WPF4.Models
             {
                 _sex = value;
                 OnPropertyChanged(Sex);
+                if (_sex != "남" && _sex != "여")
+                {
+                    MessageBox.Show("성별을 다시 확인해주세요.", "Warning");
+                    //throw new Exception("성별오류");
+                }
             }
         }
 

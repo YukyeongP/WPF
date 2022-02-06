@@ -16,9 +16,15 @@ namespace WPF4.Views
             DataContext = new AddMemViewModel();
         }
 
-        private void RegisterButtonClick(object sender, System.Windows.RoutedEventArgs e)
+        private void RegisterButtonClick(object sender, RoutedEventArgs e)
         {
             // MemListUserControl로 전환
+        }
+
+        private void CancelButtonClick(object sender, RoutedEventArgs e)
+        {
+            // MemListUserControl로 전환
+            //this.Content = MemListUserControl.Instance.Content;
         }
     }
     class SexSelection : ObservableCollection<string>

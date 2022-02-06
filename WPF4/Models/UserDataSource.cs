@@ -6,7 +6,7 @@ namespace WPF4.Models
 {
     public class UserDataSource : INotifyPropertyChanged
     {
-        private static ObservableCollection<UserInfo> _users { get; } = new ObservableCollection<UserInfo>();
+        public static ObservableCollection<UserInfo> _users { get; } = new ObservableCollection<UserInfo>();
         public event PropertyChangedEventHandler PropertyChanged;
 
         public UserDataSource()
@@ -14,7 +14,8 @@ namespace WPF4.Models
         }
         public IEnumerable<UserInfo> UserList
         {
-            get { return _users; }
+            //get { return _users; }
+            get => _users;
         }
 
         public static ObservableCollection<UserInfo> GetUsers()
@@ -31,6 +32,15 @@ namespace WPF4.Models
         {
             if (user != null)
                 _users.Add(user);
-        }       
+        }
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
     }
 }

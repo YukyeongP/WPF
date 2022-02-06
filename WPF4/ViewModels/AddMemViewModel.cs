@@ -7,12 +7,19 @@ namespace WPF4.ViewModels
 {
     public class AddMemViewModel:INotifyPropertyChanged
     {
-        //public ICommand SwitchViewCommand { get; }
         public ICommand Register { get; set; }
         public ICommand Cancel { get; set; }
 
+        public AddMemViewModel()
+        {
+            NewUser = new UserInfo();
+
+            Register = new DelegateCommand(RegisterBtnClick);
+            Cancel = new DelegateCommand(CancelBtnClick);
+        }
+
         private UserInfo _newUser;
-        public UserInfo NewUser 
+        public UserInfo NewUser
         {
             get => _newUser;
             set
@@ -22,21 +29,10 @@ namespace WPF4.ViewModels
             }
         }
 
-        public AddMemViewModel()
-        {
-            NewUser = new UserInfo();
-
-            Register = new DelegateCommand(RegisterBtnClick);
-            Cancel = new DelegateCommand(CancelBtnClick);
-            //SwitchViewCommand = new DelegateCommand<object>(p => OnSwitchView(p));
-        }
-
         public void RegisterBtnClick()
         {
             UserDataSource.AddUser(new UserInfo(NewUser.Name, NewUser.Address, NewUser.Sex, NewUser.Birthday, NewUser.Age, NewUser.PhoneNo, NewUser.Note));
             NewUser = new UserInfo();
-
-            //usercontrol 전환
         }
 
         public void CancelBtnClick()

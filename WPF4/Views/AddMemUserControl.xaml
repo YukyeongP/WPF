@@ -89,8 +89,8 @@
 
             <Grid Grid.Row="3" Grid.ColumnSpan="4" Margin="0,170,0,0" Grid.RowSpan="2">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                    <Button x:Name="RegisterButton" Content="등록" Margin="5" Width="150" Height="40" Click="RegisterButtonClick" Command="{Binding Register}"/>
-                    <Button x:Name="CancelButton" Content="취소" Margin="5" Width="150" Height="40" Command="{Binding Cancel}"/>
+                    <Button x:Name="RegisterButton" Content="등록" Margin="5" Width="150" Height="40" Command="{Binding Register}" Click="RegisterButtonClick"/>
+                    <Button x:Name="CancelButton" Content="취소" Margin="5" Width="150" Height="40" Click="CancelButtonClick" Command="{Binding Cancel}"/>
                 </StackPanel>
             </Grid>
         </Grid>

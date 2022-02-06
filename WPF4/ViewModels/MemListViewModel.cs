@@ -3,6 +3,8 @@ using Prism.Commands;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System;
+using System.Windows;
 
 namespace WPF4.ViewModels
 {
@@ -10,6 +12,11 @@ namespace WPF4.ViewModels
     {
         public ObservableCollection<UserInfo> Users { get; } = UserDataSource.GetUsers();
         public ICommand Delete { get; set; }
+
+        public MemListViewModel()
+        {
+            Delete = new DelegateCommand<object>(DeleteButtonClick);
+        }
 
         private UserInfo selectedUser;
         public UserInfo SelectedUser
@@ -20,12 +27,6 @@ namespace WPF4.ViewModels
                 selectedUser = value;
                 OnPropertyChanged(nameof(SelectedUser));
             }
-        }
-
-        // SelctedUser를 MemListUserControl에 Binding 
-        public MemListViewModel()
-        {
-            Delete = new DelegateCommand<object>(DeleteButtonClick);
         }
 
         public void DeleteButtonClick(object obj)

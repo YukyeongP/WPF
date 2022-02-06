@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Media;
+using WPF4.Models;
 using WPF4.ViewModels;
 
 namespace WPF4.Views

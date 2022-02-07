@@ -1,0 +1,1 @@
+C:\Users\byk11\.vscode\extensions\ms-azuretools.vscode-azurefunctions-1.6.0\resources\dotnetJsonCli\netcoreapp3.0\Newtonsoft.Json.dll

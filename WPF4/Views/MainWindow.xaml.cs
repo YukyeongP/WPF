@@ -1,11 +1,16 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Media;
-using WPF4.Models;
+﻿using System.Windows;
 using WPF4.ViewModels;
+using DevExpress.Mvvm;
+using System.Windows.Media;
 
 namespace WPF4.Views
 {
+    public enum MainViewType
+    {
+        AddMemberView,
+        MemberListView
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -14,25 +19,53 @@ namespace WPF4.Views
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
+            ResetViewModel(MainViewType.AddMemberView);
+
+            Messenger.Default.Register<string>(this, MessageReceived);
         }
 
         private void AddMemBtnClick(object sender, RoutedEventArgs e)
         {
-            AddUserControl.Visibility = Visibility.Visible;
-            MemListControl.Visibility = Visibility.Hidden;
+            ResetViewModel(MainViewType.AddMemberView);
 
-            AddMemButton.Background = Brushes.LightSkyBlue;
-            MemListButton.Background = Brushes.Transparent;
+            Messenger.Default.Send("ColorAddMemButton"); //NavigateToAddMem
+        }
+
+        private void ResetViewModel(MainViewType viewType)
+        {
+            if (viewType == MainViewType.AddMemberView)
+            {
+                DataContext = new AddMemViewModel();
+            }
+            else
+            {
+                DataContext = new MemListViewModel();
+            }
         }
 
         private void MemListBtnClick(object sender, RoutedEventArgs e)
         {
-            MemListControl.Visibility = Visibility.Visible;
-            AddUserControl.Visibility = Visibility.Hidden;
+            ResetViewModel(MainViewType.MemberListView);
 
-            MemListButton.Background = Brushes.LightSkyBlue;
-            AddMemButton.Background = Brushes.Transparent;
+            Messenger.Default.Send("ColorMemListButton");
+        }
+
+        private void MessageReceived(string message)
+        {
+            if (message == "ToMemListControl")
+            {
+                ResetViewModel(MainViewType.MemberListView);
+            }
+            if (message == "ColorAddMemButton")
+            {
+                AddMemButton.Background = Brushes.Lavender;
+                MemListButton.Background = Brushes.Transparent;
+            }
+            if (message == "ColorMemListButton")
+            {
+                MemListButton.Background = Brushes.Lavender;
+                AddMemButton.Background = Brushes.Transparent;
+            }
         }
     }
 }

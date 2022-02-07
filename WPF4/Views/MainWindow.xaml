@@ -4,14 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF4.Views"
+        xmlns:ViewModels="clr-namespace:WPF4.ViewModels"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="550" Width="800" MinHeight="530" MinWidth="740">
     <Window.Resources>
-        <DataTemplate DataType="{x:Type local:AddMemUserControl}">
-            <local:AddMemUserControl/>
+        <DataTemplate DataType="{x:Type ViewModels:AddMemViewModel}">
+            <local:AddMemUserControl DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type local:MemListUserControl}">
-            <local:MemListUserControl/>
+        <DataTemplate DataType="{x:Type ViewModels:MemListViewModel}">
+            <local:MemListUserControl DataContext="{Binding}"/>
         </DataTemplate>
     </Window.Resources>
 
@@ -25,19 +26,11 @@
             <ColumnDefinition Width="610"/>
         </Grid.ColumnDefinitions>
 
-        <RadioButton x:Name="AddMemButton" Grid.Row="0" Grid.Column="0" Content="신규 회원 등록" Width="140" Height="40" HorizontalAlignment="Left" 
-                Margin="20,20,0,10" VerticalAlignment="Center" Background="LightSkyBlue" Click="AddMemBtnClick" Style="{StaticResource {x:Type ToggleButton}}"
-                />
-        <RadioButton x:Name="MemListButton" Grid.Row="0" Grid.Column="1" Content="회원 목록" Width="140" Height="40" HorizontalAlignment="Left" 
-                Margin="2,20,0,10" VerticalAlignment="Center" Click="MemListBtnClick" Style="{StaticResource {x:Type ToggleButton}}"
-                    />
+        <Button x:Name="AddMemButton" Grid.Row="0" Grid.Column="0" Content="신규 회원 등록" Width="140" Height="40" HorizontalAlignment="Left" 
+                Margin="20,20,0,10" VerticalAlignment="Center" Click="AddMemBtnClick" />
+        <Button x:Name="MemListButton" Grid.Row="0" Grid.Column="1" Content="회원 목록" Width="140" Height="40" HorizontalAlignment="Left" 
+                Margin="2,20,0,10" VerticalAlignment="Center" Click="MemListBtnClick" />
 
-        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0.333,0.333,-0.333">
-            <local:AddMemUserControl x:Name="AddUserControl" Visibility="Visible"/>
-            <local:MemListUserControl x:Name="MemListControl" Visibility="Collapsed"/>
-        </Grid>
-
-        <!--<ContentControl Content="{Binding SwitchViewCommand, ConverterParameter=0}" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0.333,0.333,-0.333"></ContentControl>-->
-        
+        <ContentControl Content="{Binding}" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0.333,0.333,-0.333"/>
     </Grid>
 </Window>

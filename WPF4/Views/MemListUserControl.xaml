@@ -12,7 +12,7 @@
     <UserControl.Resources> 
         <local:UserDataSource x:Key="users"/>
         <DataTemplate x:Key="userTemplate" >
-            <TextBlock Text="{Binding Path=Name}" Foreground="Red"/>
+            <TextBlock Text="{Binding Path=Name}" Foreground="Black"/>
         </DataTemplate>
 
         <CollectionViewSource x:Key="cvs" x:Name="CollectionView" Source="{Binding Source={StaticResource users}, Path=UserList}"
@@ -59,13 +59,13 @@
         <TextBlock x:Name="MemListLabel" Grid.Row="0" Grid.Column="0" Margin="20,0,10,20" Text="회원 목록" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
         <TreeView x:Name="UserTreeView" Grid.Row="1" Grid.Column="0" Margin="0,0,15,0" Width="140"
-                  ItemsSource="{Binding Source={StaticResource cvs}, Path=Groups, UpdateSourceTrigger=Explicit}" 
+                  ItemsSource="{Binding Source={StaticResource cvs}, Path=Groups}" 
                   ItemTemplate="{StaticResource categoryTemplate}" 
                   SelectedItemChanged="TreeViewSelectionChanged">
         </TreeView>
         
         <TextBlock x:Name="MemInfoLabel" Grid.Row="0" Grid.Column="1" Margin="20,0,10,20" Text="회원 정보" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Grid Grid.Row="1" Grid.Column="1" Margin="10,0" HorizontalAlignment="Left">
+        <Grid Grid.Row="1" Grid.Column="1" Margin="10,0" HorizontalAlignment="Left" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
@@ -94,8 +94,8 @@
             <TextBox x:Name="TbxName" Grid.Row="0" Grid.Column="1" Text="{Binding SelectedUser.Name}" Style="{StaticResource TbxStyle}" />
             <TextBox x:Name="TbxAddress" Grid.Row="1" Grid.Column="1" Text="{Binding SelectedUser.Address}" Style="{StaticResource TbxStyle}" />
             <TextBox x:Name="TbxSex" Grid.Row="2" Grid.Column="1"  Text="{Binding SelectedUser.Sex}" Style="{StaticResource TbxStyle}"/>
-            <TextBox x:Name="TbxBday" Grid.Row="3" Grid.Column="1" Text="{Binding SelectedUser.Birthday}" Style="{StaticResource TbxStyle}"/>
-            <TextBox x:Name="TbxAge" Grid.Row="4" Grid.Column="1" Text="{Binding SelectedUser.Age, UpdateSourceTrigger=LostFocus}" Style="{StaticResource TbxStyle}"/>
+            <TextBox x:Name="TbxBday" Grid.Row="3" Grid.Column="1" Text="{Binding SelectedUser.Birthday, StringFormat='yyyy/MM/dd'}" Style="{StaticResource TbxStyle}"/>
+            <TextBox x:Name="TbxAge" Grid.Row="4" Grid.Column="1" Text="{Binding SelectedUser.Age}" Style="{StaticResource TbxStyle}"/>
             <TextBox x:Name="TbxPhoneNo" Grid.Row="5" Grid.Column="1" Text="{Binding SelectedUser.PhoneNo}" Style="{StaticResource TbxStyle}"/>
             <TextBox x:Name="TbxNote" Grid.Row="6" Grid.Column="1" Height="Auto" Text="{Binding SelectedUser.Note}" Style="{StaticResource TbxStyle}" Margin="26,10,26,25"/>
 

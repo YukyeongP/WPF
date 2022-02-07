@@ -1,21 +1,9 @@
-﻿using System.ComponentModel;
-using System.Windows.Input;
-using System.Windows.Controls;
-
-namespace WPF4.ViewModels
+﻿namespace WPF4.ViewModels
 {
-    class MainWindowViewModel : INotifyPropertyChanged
-    {
-        public ICommand RegisterMenu { get; set; }
-        public ICommand UserListMenu { get; set; }
-        
+    class MainWindowViewModel
+    {        
         public MainWindowViewModel()
         {
-            //RegisterMenu = new DelegateCommand(RegisterMenuBtnClick);
-            //UserListMenu = new DelegateCommand(UserListMenuBtnClick);
-
-            //AddMemUCIsVisible = Visibility.Visible;
-            //MemListUCIsVisible = Visibility.Collapsed;
         }
 
         //private Visibility _addMemUCIsVisible;
@@ -57,15 +45,5 @@ namespace WPF4.ViewModels
         //{
         //    MemListUCIsVisible = Visibility.Visible;
         //}
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
-        }
     }
 }

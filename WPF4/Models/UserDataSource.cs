@@ -7,14 +7,12 @@ namespace WPF4.Models
     public class UserDataSource : INotifyPropertyChanged
     {
         public static ObservableCollection<UserInfo> _users { get; } = new ObservableCollection<UserInfo>();
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public UserDataSource()
         {
         }
         public IEnumerable<UserInfo> UserList
         {
-            //get { return _users; }
             get => _users;
         }
 
@@ -30,10 +28,11 @@ namespace WPF4.Models
 
         public static void AddUser(UserInfo user)
         {
-            if (user != null)
+            if (user.Name != null && user.Age != null && user.Sex != null) //
                 _users.Add(user);
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

@@ -1,6 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using DevExpress.Mvvm;
 using WPF4.ViewModels;
-using System.Windows;
+using System.Windows.Controls;
 using System.Collections.ObjectModel;
 
 namespace WPF4.Views
@@ -18,13 +19,15 @@ namespace WPF4.Views
 
         private void RegisterButtonClick(object sender, RoutedEventArgs e)
         {
-            // MemListUserControl로 전환
+            // For switching usercontrol
+            Messenger.Default.Send("ToMemListControl");
+            Messenger.Default.Send("ColorMemListButton");
         }
 
         private void CancelButtonClick(object sender, RoutedEventArgs e)
         {
-            // MemListUserControl로 전환
-            //this.Content = MemListUserControl.Instance.Content;
+            Messenger.Default.Send("ToMemListControl");
+            Messenger.Default.Send("ColorMemListButton");
         }
     }
     class SexSelection : ObservableCollection<string>

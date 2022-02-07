@@ -3,8 +3,6 @@ using Prism.Commands;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
-using System;
-using System.Windows;
 
 namespace WPF4.ViewModels
 {

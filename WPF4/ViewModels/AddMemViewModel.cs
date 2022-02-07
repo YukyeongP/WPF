@@ -7,8 +7,8 @@ namespace WPF4.ViewModels
 {
     public class AddMemViewModel:INotifyPropertyChanged
     {
-        public ICommand Register { get; set; }
         public ICommand Cancel { get; set; }
+        public ICommand Register { get; set; }
 
         public AddMemViewModel()
         {

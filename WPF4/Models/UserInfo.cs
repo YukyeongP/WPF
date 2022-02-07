@@ -1,6 +1,6 @@
-﻿using System;
+﻿using System.Windows;
 using System.ComponentModel;
-using System.Windows;
+using System;
 
 namespace WPF4.Models
 {
@@ -135,19 +135,19 @@ namespace WPF4.Models
                 if (_sex != "남" && _sex != "여")
                 {
                     MessageBox.Show("성별을 다시 확인해주세요.", "Warning");
-                    //throw new Exception("성별오류");
+                    return;
                 }
             }
         }
 
-        private string _bday;
-        public string Birthday
+        private DateTime _bday = DateTime.Now;
+        public DateTime Birthday
         {
             get => _bday;
             set
             {
                 _bday = value;
-                OnPropertyChanged(Birthday);
+                OnPropertyChanged(nameof(Birthday));
             }
         }
 
@@ -155,7 +155,7 @@ namespace WPF4.Models
         {
         }
 
-        public UserInfo(string name, string addr, string sex, string bday, string age, string phoneNo, string note)
+        public UserInfo(string name, string addr, string sex, DateTime bday, string age, string phoneNo, string note)
         {
             Name = name;
             Address = addr;

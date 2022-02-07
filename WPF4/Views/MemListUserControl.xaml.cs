@@ -1,9 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Windows;
-using System.Windows.Controls;
 using WPF4.Models;
+using System.Windows;
 using WPF4.ViewModels;
+using System.Windows.Controls;
 
 namespace WPF4.Views
 {
@@ -12,19 +11,6 @@ namespace WPF4.Views
     /// </summary>
     public partial class MemListUserControl : UserControl
     {
-        private static MemListUserControl _obj;
-        public static MemListUserControl Instance
-        {
-            get
-            {
-                if(_obj == null)
-                {
-                    _obj = new MemListUserControl();
-                }
-                return _obj;
-            }
-        }
-
         public MemListUserControl()
         {
             InitializeComponent();

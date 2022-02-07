@@ -17,7 +17,7 @@
   * View는 ViewModel을 DataContext로만 알고, ViewModel은 View와 관련된 UI 객체를 전혀 모르도록 함.
   
 4.
-1) 회원 정보
+  1) 회원 정보
  - 나이 값을 변경하면 회원 목록에 자동 반영 v 
 : MemListUserControl.xaml 
 1. IsLiveGroupingRequested="True"(https://docs.microsoft.com/ko-kr/dotnet/api/system.windows.data.collectionviewsource.islivegroupingrequested?view=netframework-4.7.2 
@@ -28,7 +28,7 @@
  - 값 변경 시 신규 회원 목록과 같은 수준으로 유효 값 처리 v
  :UserInfo에서 처리
 
-2) 신규 회원 목록
+  2) 신규 회원 목록
  - 유효한 값 처리
   (1) 나이 v
   (2) 성별(여/남/모름) v

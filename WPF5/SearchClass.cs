@@ -10,7 +10,6 @@ namespace WPF5
     {
         public string Path { get; set; }
         public IEnumerable<string> AllFiles;
-        public List<String> FileCollection { get; set; } = new List<string>();
         public List<String> Extensions { get; set; } = new List<string>();
 
         public SearchClass(string path)
@@ -57,53 +56,30 @@ namespace WPF5
             }
         }
 
-        public ConcurrentBag<string> CollectFiles2()
-        {
-            ConcurrentBag<string> cb = new ConcurrentBag<string>();
-
-            for (int i = 0; i < Extensions.Count; i++)
-            {
-                var savePath = @"D:\Output\ExeAndDllFiles3.txt";
-                using (StreamWriter outputFile = new StreamWriter(savePath))
-                {
-                    var ct = 0;
-                    foreach (var files in AllFiles.Where(s => s.EndsWith(Extensions[i])))
-                    {
-                        ct++;
-                        cb.Add(files);
-                        if (ct == 1000) break;
-                    }
-                }
-            }
-            return cb;
-        }
-
-
-        public ConcurrentBag<string> CollectFiles()
+        public void CollectFiles(ConcurrentBag<string> bag)
         {
             object collectFilesLock = new object();
-            ConcurrentBag<string> cb = new ConcurrentBag<string>();
-            var ct=0;
+            var savePath = @"D:\Output\AllFile.txt";
 
             lock (collectFilesLock)
             {
-                var savePath = @"D:\Output\ExeAndDllFiles2.txt";
                 for (int i = 0; i < Extensions.Count; i++)
                 {
-                    foreach (var files in AllFiles.Where(s => s.EndsWith(".dll") || s.EndsWith(".exe")))
+                    using (StreamWriter outputFile = new StreamWriter(savePath))
                     {
-                        ct++;
-                        //Console.WriteLine(files);
-                        //FileCollection.Add(files);
-                        cb.Add(files);
-                        if (ct == 1000) break;
+                        var ct = 0;
+                        foreach (var files in AllFiles.Where(s => s.EndsWith(Extensions[i])))
+                        {
+                            ct++;
+                            bag.Add(files);
+                            if (ct == 1000) break;
+                        }
                     }
                 }
-                File.WriteAllLines(savePath, FileCollection);
             }
-            return cb;
+            File.WriteAllLines(savePath, bag);
         }
-
+        
         private IEnumerable<String> GetAllFiles(string path, string searchPattern)
         {
             return Directory.EnumerateFiles(path, searchPattern).Union(

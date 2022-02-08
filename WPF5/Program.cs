@@ -1,28 +1,22 @@
 ﻿using System.IO;
 using System.Threading;
-using System.Collections.Generic;
 using System.Collections.Concurrent;
-using System.Threading.Tasks;
 
 namespace WPF5
 {
     class Program
     {
-        //private BlockingCollection<string> myBC;
-        //public BlockingCollection<string> ProgramBc { get { return myBC; } }
+        public static ConcurrentBag<string> Bag { get; set; } = new ConcurrentBag<string>();
 
         static void Main(string[] args)
         {
             var allDrives = DriveInfo.GetDrives(); 
-            ConcurrentBag<string> bag = new ConcurrentBag<string>();
-
+            
             foreach (DriveInfo drive in allDrives)
             { 
                 var thread = new Thread(new ParameterizedThreadStart(Working));
                 thread.Start(drive);
-                //bag.Add();
             }
-
         }
 
         public static void Working(object drive)
@@ -32,10 +26,9 @@ namespace WPF5
             var searchClass = new SearchClass(rootDir);
 
             searchClass.StartSearch(rootDir, "*.dll|*.exe");
-            //searchClass.WriteFile(rootDir);
+            searchClass.WriteFile(rootDir);
 
-            //////////
-            var bag = searchClass.CollectFiles2();
+            searchClass.CollectFiles(Bag);
         }
     }
 }

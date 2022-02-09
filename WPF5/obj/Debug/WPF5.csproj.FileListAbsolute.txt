@@ -12,3 +12,10 @@ C:\Users\byk11\Desktop\HCInternship\WPFCode\WPF\WPF5\obj\Debug\WPF5.csproj.CoreC
 C:\Users\byk11\Desktop\HCInternship\WPFCode\WPF\WPF5\obj\Debug\WPF5.exe
 C:\Users\byk11\Desktop\HCInternship\WPFCode\WPF\WPF5\obj\Debug\WPF5.pdb
 C:\Users\byk11\Desktop\HCInternship\WPFCode\WPF\WPF5\obj\Debug\WPF5.csprojResolveAssemblyReference.cache
+C:\Users\김승주\Desktop\YKP\WPF_\WPF5\bin\Debug\WPF5.exe.config
+C:\Users\김승주\Desktop\YKP\WPF_\WPF5\bin\Debug\WPF5.exe
+C:\Users\김승주\Desktop\YKP\WPF_\WPF5\bin\Debug\WPF5.pdb
+C:\Users\김승주\Desktop\YKP\WPF_\WPF5\obj\Debug\WPF5.csprojAssemblyReference.cache
+C:\Users\김승주\Desktop\YKP\WPF_\WPF5\obj\Debug\WPF5.csproj.CoreCompileInputs.cache
+C:\Users\김승주\Desktop\YKP\WPF_\WPF5\obj\Debug\WPF5.exe
+C:\Users\김승주\Desktop\YKP\WPF_\WPF5\obj\Debug\WPF5.pdb

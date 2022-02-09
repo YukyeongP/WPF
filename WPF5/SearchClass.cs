@@ -17,20 +17,6 @@ namespace WPF5
             Path = path;
         }
 
-        private void InitExt(string ext)
-        {
-            ext = ext.Replace("*", "").Replace(".","");
-
-            if (ext.Contains('|'))
-            {
-                Extensions = ext.Split('|').ToList();
-            }
-            else
-            {
-                Extensions.Add(ext); 
-            }
-        }
-
         public void StartSearch(string dir, string ext)
         {
             InitExt(ext);
@@ -77,9 +63,24 @@ namespace WPF5
                     }
                 }
             }
+
             File.WriteAllLines(savePath, bag);
         }
-        
+
+        private void InitExt(string ext)
+        {
+            ext = ext.Replace("*", "").Replace(".", "");
+
+            if (ext.Contains('|'))
+            {
+                Extensions = ext.Split('|').ToList();
+            }
+            else
+            {
+                Extensions.Add(ext);
+            }
+        }
+
         private IEnumerable<String> GetAllFiles(string path, string searchPattern)
         {
             return Directory.EnumerateFiles(path, searchPattern).Union(

@@ -27,7 +27,6 @@ namespace WPF5
 
             searchClass.StartSearch(rootDir, "*.dll|*.exe");
             searchClass.WriteFile(rootDir);
-
             searchClass.CollectFiles(Bag);
         }
     }

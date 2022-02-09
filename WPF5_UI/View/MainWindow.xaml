@@ -1,0 +1,83 @@
+﻿<Window x:Class="WPF5_UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Models ="clr-namespace:WPF5_UI.Models"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="800" MinWidth="700" MinHeight="500">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}" x:Key="TbkStyle">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="Margin" Value="20,0"/>
+            <Setter Property="FontWeight" Value="Black"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}" x:Key="TbxStyle">
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="EXE 목록" Style="{StaticResource TbkStyle}"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="DLL 목록" Style="{StaticResource TbkStyle}"/>
+
+        <ListBox x:Name="EXEListBox" Grid.Row="1" Grid.Column="0" Margin="20,0,10,20" ItemsSource="{Binding FileInformation}" IsSynchronizedWithCurrentItem="True">
+            <TextBlock Text="{Binding DllFileName}"/>
+        </ListBox>
+        <ListBox x:Name="DLLListBox" Grid.Row="1" Grid.Column="1" Margin="20,0,10,20" IsSynchronizedWithCurrentItem="True">
+            <TextBlock Text="{Binding ExeFileName}"/>
+        </ListBox>
+
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="ScanButton" Grid.Row="0" Width="200" Height="40" VerticalAlignment="Top" Content="스캔 정지" Command="{Binding Pause}"></Button>
+            
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="전체 개수: " FontSize="14"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="전체 용량: " FontSize="14"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="DLL 개수: " FontSize="14"/>
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="DLL 전체 크기: " FontSize="14"/>
+                <TextBlock Grid.Row="6" Grid.Column="0" Text="EXE 개수: " FontSize="14"/>
+                <TextBlock Grid.Row="7" Grid.Column="0" Text="EXE 전체 크기: " FontSize="14"/>
+
+                <!-- 스캔 정보 입력되는 곳 -->
+                <TextBlock x:Name="AllFileCountTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding FileInformation.AllFileCount, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbkStyle}" />
+                <TextBlock x:Name="AllFileVolumeTextBox" Grid.Row="1" Grid.Column="1" Text="{Binding FileInformation.AllFileVolume, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbkStyle}" />
+                <TextBlock x:Name="DllCountTextBox" Grid.Row="3" Grid.Column="1" Text="{Binding FileInformation.DllFileCount, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbkStyle}" />
+                <TextBlock x:Name="DllVolumeTextBox" Grid.Row="4" Grid.Column="1" Text="{Binding FileInformation.DllFileVolume, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbkStyle}" />
+                <TextBlock x:Name="EXECountTextBox" Grid.Row="6" Grid.Column="1" Text="{Binding FileInformation.ExeFileCount, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbkStyle}" />
+                <TextBlock x:Name="EXEVolumeTextBox" Grid.Row="7" Grid.Column="1" Text="{Binding FileInformation.ExeFileVolume, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TbkStyle}" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

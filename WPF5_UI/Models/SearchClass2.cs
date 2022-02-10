@@ -1,14 +1,14 @@
-﻿//SearchClass.cs
-
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
+using System.Windows.Threading;
 using System.Collections.Generic;
-using System.Collections.Concurrent;
+using System.Collections.ObjectModel;
+
 
 namespace WPF5_UI.Models
 {
-    public class SearchClass
+    class SearchClass2
     {
         public string Path { get; set; }
         // public List<String> Extensions { get; set; } = new List<string>();
@@ -19,23 +19,23 @@ namespace WPF5_UI.Models
             return TargetFile;
         }
 
-        public static ConcurrentBag<FileInfoClass> TargetFiles { get; } = new ConcurrentBag<FileInfoClass>();
-        public static ConcurrentBag<FileInfoClass> GetTargetFilesInfo()
+        public static ObservableCollection<FileInfoClass> TargetFiles { get; set; } = new ObservableCollection<FileInfoClass>();
+        public static ObservableCollection<FileInfoClass> GetTargetFilesInfo()
         {
             return TargetFiles;
         }
 
-        public SearchClass(string path)
+        public SearchClass2(string path)
         {
             Path = path;
         }
 
         public void StartSearch(string dir, string ext)
-        {
-            //InitExt(ext);
+        {        
+            object lockObject = new object();
+             //InitExt(ext);
             var allFiles = GetAllFiles(dir, "*.*");
             FileInfo fileInfo;
-
             try
             {
                 foreach (var file in allFiles)
@@ -43,11 +43,19 @@ namespace WPF5_UI.Models
                     fileInfo = new FileInfo(file);
                     TargetFile.FileSize = fileInfo.Length;
                     TargetFile.FileName = file;
-                    TargetFiles.Add(TargetFile);
+
+                    DispatcherService.Invoke((Action)(() =>
+                    {
+                        lock (lockObject)
+                        { 
+                            TargetFiles.Add(TargetFile);
+                            TargetFile = new FileInfoClass();
+                        }
+                    }));
                 }
-            }
-            catch (Exception e)
+            } catch
             {
+
             }
         }
 
@@ -83,5 +91,5 @@ namespace WPF5_UI.Models
                 }));
         }
     }
+
 }
-s

@@ -21,18 +21,18 @@ namespace WPF5_UI.Models
             {
                 _fileName = value;
                 FileCount++;
-                if (_fileName.EndsWith(".dll"))
-                {
-                    DllFileName = _fileName;
-                    DllFileSize = _fileSize;
-                    DllFileCount++;
-                }
-                else if (_fileName.EndsWith(".exe"))
-                {
-                    ExeFileName = _fileName;
-                    ExeFileSize = _fileSize;
-                    ExeFileCount++;
-                }
+                //if (_fileName.EndsWith(".dll"))
+                //{
+                //    DllFileName = _fileName;
+                //    DllFileSize = _fileSize;
+                //    DllFileCount++;
+                //}
+                //else if (_fileName.EndsWith(".exe"))
+                //{
+                //    ExeFileName = _fileName;
+                //    ExeFileSize = _fileSize;
+                //    ExeFileCount++;
+                //}
 
                 OnPropertyChanged(nameof(FileName));
             }
@@ -44,7 +44,7 @@ namespace WPF5_UI.Models
             get => _filecount;
             set
             {
-                _filecount = value;
+                _filecount += value;
                 OnPropertyChanged(nameof(FileCount));
             }
         }
@@ -135,5 +135,10 @@ namespace WPF5_UI.Models
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
+
+        //public override string ToString()
+        //{
+        //    return $"Filename: {FileName} DllFile: {DllFileName} ExeFile: {ExeFileName}";
+        //}
     }
 }

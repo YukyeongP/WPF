@@ -84,4 +84,3 @@ namespace WPF5_UI.Models
         }
     }
 }
-s

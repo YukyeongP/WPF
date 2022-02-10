@@ -57,9 +57,8 @@ namespace WPF5_UI.ViewModel
             _isRunning = !_isRunning;
             ButtonName = (ButtonName == "스캔 시작") ? "스캔 정지" : "스캔 시작";
 
-            if (count == 1)
+            if (count == 1) // 처음실행
             {
-                var allDrives = DriveInfo.GetDrives();
                 thread = new Thread(new ParameterizedThreadStart(Working));
                 thread.Start(allDrives[0]);
             }

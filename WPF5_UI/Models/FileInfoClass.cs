@@ -7,10 +7,15 @@ namespace WPF5_UI.Models
         public FileInfoClass()
         {
         }
-
-        public FileInfoClass(string name)
+        
+        private string _extension;
+        public string Extension
         {
-            FileName = name;
+            get => _extension;
+            set
+            {
+
+            }
         }
 
         private string _fileName;
@@ -20,36 +25,34 @@ namespace WPF5_UI.Models
             set
             {
                 _fileName = value;
-                FileCount++;
-                //if (_fileName.EndsWith(".dll"))
-                //{
-                //    DllFileName = _fileName;
-                //    DllFileSize = _fileSize;
-                //    DllFileCount++;
-                //}
-                //else if (_fileName.EndsWith(".exe"))
-                //{
-                //    ExeFileName = _fileName;
-                //    ExeFileSize = _fileSize;
-                //    ExeFileCount++;
-                //}
+                if (_fileName.EndsWith(".dll"))
+                {
+                    DllFileName = _fileName;
+                    DllFileSize = _fileSize;
+                }
+                else if (_fileName.EndsWith(".exe"))
+                {
+                    ExeFileName = _fileName;
+                    ExeFileSize = _fileSize;
+                }
 
                 OnPropertyChanged(nameof(FileName));
             }
         }
 
-        private int _filecount = 0;
-        public int FileCount
+        private long _fileCount = 0;
+        public long FileCount
         {
-            get => _filecount;
+            get => _fileCount;
             set
             {
-                _filecount += value;
+                _fileCount = value;
                 OnPropertyChanged(nameof(FileCount));
             }
         }
 
-        private long _fileSize = 0;
+
+        private long _fileSize;
         public long FileSize
         {
             get => _fileSize;
@@ -68,17 +71,6 @@ namespace WPF5_UI.Models
             {
                 _dllFileName = value;
                 OnPropertyChanged(nameof(DllFileName));
-            }
-        }
-
-        private int _dllFileCount = 0;
-        public int DllFileCount
-        {
-            get => _dllFileCount;
-            set
-            {
-                _dllFileCount = value;
-                OnPropertyChanged(nameof(DllFileCount));
             }
         }
 
@@ -101,17 +93,6 @@ namespace WPF5_UI.Models
             {
                 _exeFileName = value;
                 OnPropertyChanged(nameof(ExeFileName));
-            }
-        }
-
-        private int _exeFileCount = 0;
-        public int ExeFileCount
-        {
-            get => _exeFileCount;
-            set
-            {
-                _exeFileCount = value;
-                OnPropertyChanged(nameof(ExeFileCount));
             }
         }
 

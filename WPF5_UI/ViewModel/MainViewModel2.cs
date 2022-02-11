@@ -1,14 +1,10 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using WPF5_UI.Models;
+using System.Windows;
 using Prism.Commands;
 using System.Threading;
 using System.Windows.Input;
-using System.Collections.Concurrent;
 using System.ComponentModel;
-using System.Windows.Threading;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Collections.ObjectModel;
 
 namespace WPF5_UI.ViewModel
@@ -21,7 +17,9 @@ namespace WPF5_UI.ViewModel
         private bool _isRunning = false;
 
         public static FileInfoClass FileInformation { get; } = SearchClass2.GetTargetFileInfo();
-        public static ObservableCollection<FileInfoClass> FileInformationCollection { get; } = SearchClass2.GetTargetFilesInfo();
+
+      //  public static ObservableCollection<FileInfoClass> FileInformationCollection { get; } = SearchClass2.GetTargetFilesInfo(); //
+
         public ICommand PushButton { get; set; }
 
         public MainViewModel2()
@@ -34,8 +32,9 @@ namespace WPF5_UI.ViewModel
         {
             var drives = drive as DriveInfo;
             var rootDir = drives.RootDirectory.ToString();
-            var searchClass = new SearchClass2(rootDir);
-            searchClass.StartSearch(rootDir, "*.dll|*.exe");
+            var testAddr = @"C:\Users\김승주\Desktop\dll";
+            var searchClass = new SearchClass2(testAddr); 
+            searchClass.StartSearch(testAddr, "*.dll|*.exe");
 
             MessageBox.Show("작업 종료");
         }
@@ -57,7 +56,7 @@ namespace WPF5_UI.ViewModel
             _isRunning = !_isRunning;
             ButtonName = (ButtonName == "스캔 시작") ? "스캔 정지" : "스캔 시작";
 
-            if (count == 1) // 처음실행
+            if (count == 1) // 처음실행시
             {
                 thread = new Thread(new ParameterizedThreadStart(Working));
                 thread.Start(allDrives[0]);

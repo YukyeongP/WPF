@@ -78,6 +78,8 @@
     </Compile>
     <Compile Include="Models\DispatcherService.cs" />
     <Compile Include="Models\FileInfoClass.cs" />
+    <Compile Include="Models\FileDataSource.cs" />
+    <Compile Include="Models\FileInfoStorage.cs" />
     <Compile Include="Models\SearchClass.cs" />
     <Compile Include="Models\SearchClass2.cs" />
     <Compile Include="Models\ThreadTest.cs" />

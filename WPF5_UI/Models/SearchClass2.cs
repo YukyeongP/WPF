@@ -11,7 +11,7 @@ namespace WPF5_UI.Models
     class SearchClass2
     {
         public string Path { get; set; }
-        // public List<String> Extensions { get; set; } = new List<string>();
+        public List<String> Extensions { get; set; } = new List<string>();
 
         public static FileInfoClass TargetFile { get; set; } = new FileInfoClass();
         public static FileInfoClass GetTargetFileInfo()
@@ -19,11 +19,13 @@ namespace WPF5_UI.Models
             return TargetFile;
         }
 
-        public static ObservableCollection<FileInfoClass> TargetFiles { get; set; } = new ObservableCollection<FileInfoClass>();
-        public static ObservableCollection<FileInfoClass> GetTargetFilesInfo()
-        {
-            return TargetFiles;
-        }
+        //public static ObservableCollection<FileInfoClass> TargetFiles { get; set; } = new ObservableCollection<FileInfoClass>();
+        //public static ObservableCollection<FileInfoClass> GetTargetFilesInfo()
+        //{
+        //    return TargetFiles;
+        //}
+
+        //public static FileDataSource TargetFileList { get; set; } = new FileDataSource();
 
         public SearchClass2(string path)
         {
@@ -31,38 +33,38 @@ namespace WPF5_UI.Models
         }
 
         public void StartSearch(string dir, string ext)
-        {        
+        {
             object lockObject = new object();
-             //InitExt(ext);
+            InitExt(ext);
             var allFiles = GetAllFiles(dir, "*.*");
             FileInfo fileInfo;
+            
             try
             {
                 foreach (var file in allFiles)
                 {
                     fileInfo = new FileInfo(file);
                     TargetFile.FileSize = fileInfo.Length;
-                    TargetFile.FileName = file;
-
+                    TargetFile.FileName = file; 
+                    
                     DispatcherService.Invoke((Action)(() =>
                     {
                         lock (lockObject)
                         { 
-                            TargetFiles.Add(TargetFile);
+                          //  TargetFiles.Add(TargetFile);
+                            FileDataSource.AddFile(TargetFile);
                             TargetFile = new FileInfoClass();
                         }
                     }));
                 }
             } catch
             {
-
             }
         }
 
-        /*
         private void InitExt(string ext)
         {
-            ext = ext.Replace("*", "").Replace(".", "");
+            ext = ext.Replace("*", "");
 
             if (ext.Contains('|'))
             {
@@ -73,7 +75,6 @@ namespace WPF5_UI.Models
                 Extensions.Add(ext);
             }
         }
-        */
 
         private IEnumerable<String> GetAllFiles(string path, string searchPattern)
         {
